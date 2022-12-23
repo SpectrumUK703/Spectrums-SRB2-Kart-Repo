@@ -1,0 +1,337 @@
+#######################################
+#This SOC moves the Abstraction Pack stages that are 
+#potentially unfriendly for large netgames or are deemed
+#so/so quality to MAP HELL. The maps which remain are those
+#I feel have potential in the future.
+#
+#The remaining levels are: 
+#Evaluation Summit, Windy Valley, Empty Sanctum, Bio Satellite, SS91 Miracle Lancer, Cosmic Rift - Abstraction Cup
+#Sublime Bastion, Motherlode Canyon, Forbidden Monolith, Hysterical Trinket, Malicious Metropolis, Flesh Paradise. - Ascension Cup
+#######################################
+
+
+MainCfg
+GameData = customtracks.dat
+
+Level GO
+LevelName = Evaluation Summit
+SubTitle = Abstraction Cup 1
+NoZone = true
+TypeOfLevel = Race
+NextLevel = GP
+SkyNum = 70
+SkyboxScaleZ = 0
+Music = EVLSUM
+lua.arcadetime = 90
+lua.arcadebonus = 45
+
+Level ZH
+LevelName = Windy Valley
+SubTitle =  Abstraction Cup 2
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 3
+SkyNum = 8429
+MobjScale = FRACUNIT/2
+SkyboxScale = 8
+Music = WVNORM
+NextLevel = ZJ
+SectionRace = true
+lua.altermaptextures1 = WVRCKB3,GFZROCK,AWVRK3W,WVRCKB3,GFZROCK,AWVRK3W,WVEDG2,WVIVY
+lua.altermaptextures2 = WVEDG1,GFZROCK,AWVRK1EW,WVEDG1,GFZROCK,AWVRK1EW,WVTORNAD,ADTORNAD
+lua.altermaptextures3 = WVRCKB2,GFZROCK,AWVRK1W,WVRCKB2,GFZROCK,AWVRK1W,WVRCKB1,AWVRK2W
+lua.altermaptextures4 = AWVRK7W,WVRCKB1,WVRCKS2,AWVRK7W,AWVRK5W,WVRCKB2 
+lua.altermaptextures5 = AWVRK8WB,WVRCKB1,WVRCKB4,AWVRK8WB,AWVRK4W,WVRCKB4
+lua.altermaptextures6 = WVRCKM3,GFZROCK,AWVRK5W,WVRCKM3,GFZROCK,AWVRK5W,WVRCKS3,AWVRK4W
+lua.altermaptextures7 = WRCKCMP1,WRCKCMP3,WRCKCMP2,WRCKCMP4,WVRCKM2,AWVRK5W
+lua.altermapflats1 = SCDGREYF,~098,WVRCKB1F,AWVRK2,WVRCKF1,AWVRK4,WVGUIDE,ADWVAR
+lua.altermapflats2 = WVSTNF1,AWVRK7,WVSTNF2,AWVRK7
+lua.altermapflats3 = ADWVGR1,GFZFLR01,WVGRS1,ADWVGR1,GFZFLR01,WVGRS1
+lua.altermapflats4 = WVRCKB2F,GFZFLR01,ADWVRK1,WVRCKB2F,GFZFLR01,ADWVRK1
+lua.altermapflats5 = ADWVRK3,GFZFLR01,WVRCKB3F,ADWVRK3,GFZFLR01,WVRCKB3F
+lua.altermapflats6 = ADWVRK8,WVRCKB1F,WVRCKB4F,ADWVRK8,ADWVRDB1,WVRCKF1
+lua.altermapflats7 = WVRCKF2,ADWVRK3,WVRCKF3,ADWVRK1,WVGRS2,WVIVYF,WVBRDR2,WVIVYF
+lua.altermapflats8 = WVRCKM2F,ADWVRK8,ADWVRDB3,WVRCKM2F,WVPATH1,ADWVRDB3,WVRCKM3F,ADWVRK8,ADWVGR1F,WVGRS1,WVBRDR1,WVIVYF
+
+Level GC
+LevelName = Empty Sanctum
+SubTitle = Abstraction Cup 3
+Music = KMAPGC
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 3
+SkyNum = 866
+Music = KMAPGC
+lua.arcadetime = 100
+lua.arcadebonus = 55
+
+Level GD
+LevelName = Bio Satellite
+SubTitle = Abstraction Cup 4
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 2
+SkyNum = 1017
+Music = KMAPGD
+lua.arcadetime = 95
+lua.arcadebonus = 55
+
+Level R3
+LevelName = SS91 Miracle Lancer
+SubTitle =  Abstraction Cup 5
+Music = SS91ML
+TypeOfLevel = Race
+NoZone = True
+NumLaps = 6
+SkyNum = 1018
+Palette = 1023
+SkyboxScale = 8
+
+Level GE
+LevelName = Cosmic Rift
+SubTitle = Abstraction Cup FINAL
+Music = KMAPGE
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 3
+SkyNum = 22
+MOBJSCALE = FRACUNIT*93/100
+NextLevel = EVALUATION
+lua.arcadetime = 95
+lua.arcadebonus = 50
+
+
+#Ascension Cup
+Level GH
+LevelName = Sublime Bastion
+SubTitle = Dreamweaver Cup 1
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 55
+Music = SUBBAS
+NoZone = True
+lua.arcadetime = 80
+lua.arcadebonus = 35
+
+Level ZN
+LevelName = Motherlode Canyon
+SubTitle = Ascension Cup 2
+Nozone = true
+TypeOfLevel = Race
+NumLaps = 4
+SkyNum = 60
+Music = MLODEC
+SectionRace = true
+NextLevel = GO
+lua.arcadetime = 80
+lua.arcadebonus = 30
+
+Level ZJ
+LevelName = Forbidden Monolith
+Music = FBNMNL
+SubTitle = Ascension Cup 3
+TypeOfLevel = Race
+NextLevel = ZK
+NumLaps = 3
+SkyNum = 6
+Nozone = 0
+lua.arcadetime = 120
+lua.arcadebonus = 50
+
+Level ZI
+LevelName = Hysterical Trinket
+Music = HYSTRI
+SubTitle = Ascension Cup 4
+TypeOfLevel = Race
+NextLevel = ZJ
+NumLaps = 4
+SkyNum = 28
+SkyboxScale = 32
+Nozone = 0
+lua.arcadetime = 100
+lua.arcadebonus = 30 
+
+Level GP
+LevelName = Malicious Metropolis
+NoZone = true
+SubTitle = Ascension Cup 5
+TypeOfLevel = Race,TV
+NumLaps = 2
+SkyNum = 4
+Music = MALMET
+Lua.altshadows = true
+LUA.tv = true
+SkyboxScaleZ = 0
+NextLevel = EVALUATION
+lua.arcadetime = 110
+lua.arcadebonus = 70
+
+Level ZK
+LevelName = Flesh Paradise
+SubTitle =  Ascension Cup FINAL
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 2
+SkyNum = 867
+MobjScale = FRACUNIT/2
+Music = FLPEVL
+NextLevel = ZL
+lua.trueparadise = true
+lua.altermap = true
+lua.altermapsky = 29 
+lua.altermapexecute = 1999 
+lua.altermapbrightness = 48
+lua.altermapflats = FLPDFLWR,JNGGRS11,FLPDGRS,JNGGRS03,FLPDWDF,JNGWDFC,NTFLAT10,STONEF1,NTFLAT9,OMRBLQ00,OFLSHB02,OMRBLL01,OFLSHF01,STONEF2,OHELLA02,ROCKFLR4,OHELLA03,ROCKFLR2,OLAVAD01,PG_WATER,VISNAKF3,SPROCF2,VSNAKF41,OMRBLL33,VSNAKF42,SPROCF1
+lua.altermaptextures1 = FLPDGRSW,JNGGRW3,FLPDGRW,JNGGRW7S,FLPDWD,JNGWD8,SKINRAIL,OFENCB01,OFALLM01,CFALL1,OFLSHB01,GSTONE1,OFLSHC01,OMRBLQ43,OFLSHE01,SHALE2,OFLSHF01,STONEW2,OFLSHG01,CLIFFW7S,SCYPFWL2,SPWALL1,SKIN2,OMRBLQ00,SKINFLE1,PHZWALL,SKINFLE2,STONEW1,OMRBLO29
+lua.altermaptextures2 = MMAZE6,VISNAKE3,SPWALL2,VSNAKE41,SHALE1,VSNAKE42,SPWALL1
+lua.nonewflp = true
+lua.arcadetime = 100
+lua.arcadebonus = 60
+
+
+
+
+#Hell Maps
+Level GA
+LevelName = Overgrown Castle
+Music = KMAPGA
+Hidden = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 117
+Nozone = 1
+lua.arcadetime = 85
+lua.arcadebonus = 40
+
+Level GB
+LevelName = Midnight Caves
+Hidden = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 3
+SkyNum = 21
+Music = KMAP13
+lua.arcadetime = 85
+lua.arcadebonus = 40
+
+Level GF
+LevelName = Ethereal Crystal	
+Hidden = true
+SubTitle = MAP HELL
+Music = KMAPGF
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 4
+SkyNum = 76
+NextLevel = GH
+lua.arcadetime = 75
+lua.arcadebonus = 25
+
+Level GI
+LevelName = Sunken Remnant
+Hidden = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 87
+Music = SUNREM
+NoZone = true
+lua.arcadetime = 75
+lua.arcadebonus = 30
+
+Level GJ
+LevelName = Harmony Villa
+Hidden = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 29
+Music = HARVIL
+NoZone = true
+lua.arcadetime = 85
+lua.arcadebonus = 40
+
+Level GK
+LevelName = Fetid Citadel
+Hidden = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 105
+Music = FETCIT
+NoZone = True
+NextLevel = EVALUATION
+lua.arcadetime = 85
+lua.arcadebonus = 40
+
+Level GL
+LevelName = Forsaken Bog
+Music = FORBOG
+Hidden = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 5
+SkyNum = 11
+Nozone = 1
+Weather = PRECIP_RAIN
+SkyboxScale = 4
+lua.arcadetime = 70
+lua.arcadebonus = 15
+
+Level GM
+LevelName = Mundane Purification
+Hidden = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 5
+Weather = PRECIP_RAIN
+Music = MUPURE
+NextLevel = ZN
+lua.arcadetime = 85
+lua.arcadebonus = 40
+
+Level ZG
+LevelName = Futuristic Boardwalk
+Hidden = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 59
+Music = CYBBW
+NextLevel = ZH
+RecordAttack = true
+lua.arcadetime = 85
+lua.arcadebonus = 35
+
+Level ZL
+LevelName = Flesh Eden
+NoZone = true
+SubTitle = BOSS FIGHT
+TypeOfLevel = Race
+NumLaps = 1
+SkyNum = 867
+Music = FLEDN
+Weather = PRECIP_STORM_NORAIN
+Hidden = true
+#Countdown = 9450
+NextLevel = CREDITS
+lua.arcadetime = 260
+lua.arcadebonus = 10
+Lua.BrightSigns = true
+lua.edenboss = true
+lua.nonewflp = true
+
+Level ZM
+LevelName = Cosmic Rift
+ZoneTitle = Classic
+Hidden = true
+SubTitle = MAP HELL
+Music = KMAPGE
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 5
+SkyNum = 22
+NextLevel = 1

@@ -1,0 +1,32 @@
+Level FG
+LevelName = Gay Energy
+SubTitle = Fickle Jokes 1
+TypeOfLevel = Race
+Music = CANDY
+NumLaps = 3
+MobjScale = 4*FRACUNIT/5
+SkyNum = 118
+SkyboxScale = 8
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+# Music:
+# Luv Unlimited
+# CANDY☆
+# [from Dance Dance Revolution MAX]
+
+Level FH
+LevelName = Crazy Eights
+SubTitle = Fickle Jokes 2
+TypeOfLevel = Race
+Music = TRIM
+NumLaps = 5
+MobjScale = 5*FRACUNIT/12
+SkyNum = 87
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+# Music:
+# kobo
+# Trim
+# [from Dance Dance Revolution Supernova 2]
