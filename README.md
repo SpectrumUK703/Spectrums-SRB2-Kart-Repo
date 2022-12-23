@@ -1,2 +1,2 @@
 # spectrumuk703.github.io
-I'm still trying to figure this all out lol
+I guess github can be used for this, cool
