@@ -1,0 +1,11 @@
+Level KA
+LevelName = Lake Margorite 2
+SubTitle = MK Special Cup 1
+TypeOfLevel = Race
+NoZone = true
+NumLaps = 2
+SkyNum = 188
+Music = KMAP56
+NextLevel = K0
+RecordAttack = true
+NoVisitNeeded = true
