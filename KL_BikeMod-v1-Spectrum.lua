@@ -15,6 +15,7 @@ local function canindrift(player)
 	or player.mo.skin == "pauline"
 	or player.mo.skin == "gemma"
 	or player.mo.skin == "sans"
+	or player.mo.skin == "bikerwario"
 		return true
 	end
 	return false
