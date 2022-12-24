@@ -1,22 +1,14 @@
 -- Bikemod by RetroStation, inspired by minenice's Inside Drift
 
 local usefor = "kuze"
+local usefortable = {"freeza2nd", "waluigibike", "crazyfrog", "skip", "cacee&milne", "bulletbill", "milne", "boshi", "funky_kong", "pauline", "gemma", "sans", "bikerwario"}
 
 local function canindrift(player)
-	if player.mo.skin == "freeza2nd"
-	or player.mo.skin == "waluigibike"
-	or player.mo.skin == "crazyfrog"
-	or player.mo.skin == "skip"
-	or player.mo.skin == "cacee&milne"
-	or player.mo.skin == "bulletbill"
-	or player.mo.skin == "milne"
-	or player.mo.skin == "boshi"
-	or player.mo.skin == "funky_kong"
-	or player.mo.skin == "pauline"
-	or player.mo.skin == "gemma"
-	or player.mo.skin == "sans"
-	or player.mo.skin == "bikerwario"
-		return true
+	local skin = player.mo.skin
+	for k, v in pairs(usefortable)
+		if skin == v
+			return true
+		end
 	end
 	return false
 end
