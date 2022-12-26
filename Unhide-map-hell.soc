@@ -1,0 +1,242 @@
+###################
+####MAP HELL#######
+####THIS IS BAD####
+###################
+
+Level H0
+LevelName = Crystal Abyss
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 2
+Music = KMAPH0
+SkyNum = 87
+Hidden = false
+NextLevel = 1
+
+Level H1
+LevelName = Peach's Castle
+NoZone = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 30
+Music = KMAPH1
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level H2
+LevelName = Arid Sands
+SubTitle = MAP HELL
+NoZone = true
+TypeofLevel = Race
+NumLaps = 3
+Music = KMAPH2
+SkyNum = 72
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+# R.I.P old MAPH3: Septic Quarry Zone
+
+Level H4
+LevelName = Chemical Facility
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 2
+Music = KMAPH4
+SkyNum = 1017
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level H5
+LevelName = 3 Color Drive
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+Music = KMAPH5
+SkyNum = 78
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level H6
+LevelName = CK Cloud
+ZoneTitle = Tops
+Act = 1
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+Music = KMAPH6
+SkyNum = 1
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level H7
+LevelName = CK Dungeon
+ZoneTitle = Maze
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 4
+Music = KMAPH7
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+# R.I.P old MAPH8: CK Death Town
+
+Level H9
+LevelName = PWR Retro
+ZoneTitle = Maze
+Subtitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+MobjScale = 7*FRACUNIT/8
+SkyNum = 8
+Music = KMAPH9
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level HA
+LevelName = SRB2 Frozen
+ZoneTitle = Night
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 4
+SkyNum = 8
+Weather = PRECIP_SNOW
+Music = KMAPHA
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level HB
+Levelname = Black Bliss
+Nozone = 1
+NumLaps = 4
+TypeOfLevel = Race
+Music = KMAPHB
+Nextlevel = 1
+Skynum = 11
+RecordAttack = True
+Hidden = false
+Weather = Precip_Rain
+Subtitle = MAP HELL
+
+Level HC
+LevelName = FZ Silence
+NoZone = true
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+MobjScale = FRACUNIT/2
+SkyNum = 2432
+Music = KMAPHC
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level HD
+LevelName = SMK Rainbow
+ZoneTitle = Road
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 5
+SkyNum = 46
+SkyboxScaleZ = 0
+Music = KMAPHD
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+###############
+# hell battle #
+###############
+
+Level HE
+LevelName = SRB2 Meadow
+ZoneTitle = Match
+SubTitle = MAP HELL
+TypeOfLevel = Battle
+Music = KMAPHE
+SkyNum = 1
+Hidden = false
+Nextlevel = B0
+
+Level HF
+LevelName = battal BOWL
+ZoneTitle = Match
+SubTitle = MAP HELL
+TypeOfLevel = Battle
+SkyNum = 371
+Music = KMAPHF
+Hidden = false
+NextLevel = B0
+
+###########################
+# Even More Hell (v1.0.2) #
+###########################
+
+Level H3
+LevelName = Volcanic Valley
+ZoneTitle = Classic
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 117
+Music = KMAP35
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level H8
+LevelName = Diamond Square
+ZoneTitle = Classic
+SubTitle = MAP HELL
+SkyNum = 5
+Music = KMAPH8
+TypeofLevel = Race
+NumLaps = 3
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+Level HG
+LevelName = Peach's Castle B
+NoZone = true
+SubTitle = MAP HELL
+TypeOfLevel = Battle
+SkyNum = 30
+Music = KMAPH1
+Hidden = false
+NextLevel = B0
+
+Level HH
+LevelName = Blue Mountain
+ZoneTitle = Classic
+Subtitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 17
+SkyboxScale = 0
+Weather = PRECIP_SNOW
+Music = KMAPHH
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+Nextlevel = 1
