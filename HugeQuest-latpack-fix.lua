@@ -4,7 +4,7 @@ local k_spinouttimer = k_spinouttimer
 addHook("MobjThinker", function(mo)
 	if not (HugeQuest and mo.ggz_frozen) then return end
 	local p = mo.player
-	if not (p and p.valid) and (p.huge > 0 or HQ_SuperCheck(p)) then return end
+	if not (p and p.valid and (p.huge > 0 or HQ_SuperCheck(p))) then return end
 	mo.ggz_frozen = nil
 	p.kartstuff[k_spinouttimer] = 0
 	mo.flags2 = $ & ~MF2_DONTDRAW
