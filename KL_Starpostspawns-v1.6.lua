@@ -32,7 +32,7 @@ addHook("ThinkFrame", do
 				local sector = mo.subsector.sector
 				for mobj in sector.thinglist()
 					if mobj.type == MT_STARPOST //Spawn closer to the starpost
-						P_TryMove(mo, mobj.x, mobj.y)
+						P_TryMove(mo, (mo.x+mobj.x)/2, (mo.y+mobj.y)/2)
 						p.softlocktimer = 0
 						p.othersoftlocktimer = 0
 						break
