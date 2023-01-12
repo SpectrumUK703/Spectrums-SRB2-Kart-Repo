@@ -52,7 +52,7 @@ local id_intable = { -- Inside Drift Angles
 -- an icy drift turn.
 
 addHook("MobjThinker", function(mo)
-	if (mo.player and mo.valid and canindrift(mo.player)) then
+	if (mo.player and mo.valid and usefortable[mo.skin]) then
 		local p = mo.player
 		local iangle = id_intable[p.kartweight]
 		local oangle = id_outtable[p.kartweight]
@@ -132,7 +132,7 @@ addHook("MobjThinker", function(mo)
 end, MT_PLAYER)
 
 addHook("PlayerSpin", function(p, inf, source)
-	if not (((inf and inf.valid) or (source and source.valid)) and canindrift(p)) then return end
+	if not (((inf and inf.valid) or (source and source.valid)) and usefortable[p.mo.skin]) then return end
 	if p.kartstuff[k_drift] then
 		p.indspin = true
 	end
