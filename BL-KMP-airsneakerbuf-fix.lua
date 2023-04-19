@@ -19,12 +19,11 @@ local section, special = 2, 6 -- for the map specific panels
 local vanillasneakertime = 47
 local gamespeedsneakerstrength = { 53740+768, 32768, 17294+768}
 local starttime = 6*TICRATE + (3*TICRATE/4)
+local cv_sneakerstack
 local function playermobjthinker(mo)
-	if not BLib then return end
-	local cv_sneakerstack = CV_FindVar(prefix.."sneakerstack")
 	local player = mo.player
 	local pks = mo.player.kartstuff
-	if kmp and kmp_airsneakerbuf.value and mo.kmp_sneakerbuffer and
+	if mo.kmp_sneakerbuffer and
 	P_IsObjectOnGround(mo) and not pks[k_spinouttimer] then
 		mo.naturalitemsneakertimer = vanillasneakertime
 		pks[k_sneakertimer] = vanillasneakertime
@@ -43,6 +42,8 @@ local function playermobjthinker(mo)
 end
 
 addHook("ThinkFrame", do
+	if not BLib and kmp and kmp_airsneakerbuf.value then return end
+	cv_sneakerstack = CV_FindVar(prefix.."sneakerstack")
 	for p in players.iterate
 		if p.mo and p.mo.valid
 			playermobjthinker(p.mo)
