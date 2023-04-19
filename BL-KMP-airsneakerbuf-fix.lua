@@ -12,6 +12,7 @@ local k_itemamount = k_itemamount
 local k_driftcharge = k_driftcharge
 local k_rocketsneakertimer = k_rocketsneakertimer
 local k_floorboost = k_floorboost
+local k_spinouttimer = k_spinouttimer
 
 local prefix = "blib_"
 
