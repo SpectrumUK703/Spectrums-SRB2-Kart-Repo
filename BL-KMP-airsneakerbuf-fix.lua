@@ -42,7 +42,7 @@ local function playermobjthinker(mo)
 end
 
 addHook("ThinkFrame", do
-	if not BLib and kmp and kmp_airsneakerbuf.value then return end
+	if not (BLib and kmp and kmp_airsneakerbuf.value) then return end
 	cv_sneakerstack = CV_FindVar(prefix.."sneakerstack")
 	for p in players.iterate
 		if p.mo and p.mo.valid
