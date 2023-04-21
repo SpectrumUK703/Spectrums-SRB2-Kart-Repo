@@ -15,9 +15,6 @@ rawset(_G, "CheckInvincibility", function(p)
 	return false
 end)
 
-                timer = (tsrb2kr and p.tsr and p.tsr.teamultimate and p.tsr.teamultimate/3) or 0,
-				hqsuperflag = (tsrb2kr and p.mo.tsr_ultimateon),
-				
 addHook("ThinkFrame", function()
 	if not tsrb2kr then return end
 	for p in players.iterate
