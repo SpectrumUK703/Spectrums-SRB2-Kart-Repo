@@ -15,6 +15,22 @@ rawset(_G, "CheckInvincibility", function(p)
 	return false
 end)
 
+                timer = (tsrb2kr and p.tsr and p.tsr.teamultimate and p.tsr.teamultimate/3) or 0,
+				hqsuperflag = (tsrb2kr and p.mo.tsr_ultimateon),
+				
+addHook("ThinkFrame", function()
+	if not tsrb2kr then return end
+	for p in players.iterate
+		p.tsrultimatedepletion = 3
+		if p.mo and p.mo.valid and p.mo.tsr_ultimateon
+			if p.oldtsrultimategauge and p.tsr.teamultimate
+				p.tsrultimatedepletion = max(p.oldtsrultimategauge - p.tsr.teamultimate, 3)
+			end
+			p.oldtsrultimategauge = p.tsr.teamultimate
+		end
+	end
+end)
+
 local cv_showitemtimers = CV_FindVar("showitemtimers")
 
 local cache = {}
@@ -99,7 +115,7 @@ hud.add(function(v,p,c)
             },
 			{
                 name = "teamultimate",
-                timer = (tsrb2kr and p.tsr and p.tsr.ultimategauge and p.tsr.ultimategauge/3),
+                timer = (tsrb2kr and p.tsr and p.tsr.teamultimate and p.tsr.teamultimate/p.tsrultimatedepletion) or 0,
 				hqsuperflag = (tsrb2kr and p.mo.tsr_ultimateon),
                 patches = {"K_HMTSR1", "K_HMTSR2"},
                 anim_frames = 1
