@@ -1,10 +1,33 @@
-rawset(_G, "CheckInvincibility", function(p)
-	if p.kartstuff[k_roulettetype] 
-	or p.kartstuff[k_stolentimer] 
-	or p.kartstuff[k_spinouttimer] 
-	or p.kartstuff[k_wipeoutslow]
-		return true
-	end
+if not HugeQuest then return end
+
+local TICRATE = TICRATE
+local FRACUNIT = FRACUNIT
+--local ANGLE_22h = ANGLE_22h
+--local FRACBITS = FRACBITS
+local k_sneakertimer = k_sneakertimer
+local k_spinouttimer = k_spinouttimer
+local k_wipeoutslow = k_wipeoutslow
+local k_driftboost = k_driftboost
+local k_driftcharge = k_driftcharge
+local k_floorboost = k_floorboost
+local k_startboost = k_startboost
+local k_itemamount = k_itemamount
+local k_itemtype = k_itemtype
+local k_rocketsneakertimer = k_rocketsneakertimer
+local k_hyudorotimer = k_hyudorotimer
+local k_drift = k_drift
+local k_speedboost = k_speedboost
+local k_boostpower = k_boostpower
+local k_accelboost = k_accelboost
+local k_invincibilitytimer = k_invincibilitytimer
+local k_growshrinktimer = k_growshrinktimer
+local k_offroad = k_offroad
+local k_itemroulette = k_itemroulette
+local k_roulettetype = k_roulettetype
+local STARTTIME = 6*TICRATE + (3*TICRATE/4)
+
+local CI = CheckInvincibility
+CheckInvincibility = function(p)
 	-- TSR
 	if tsrb2kr and p.tsr and p.tsr.team and server.tsr_server and server.tsr_server.transfers
 		local teamtransfer = server.tsr_server.transfers[p.tsr.team]
@@ -12,8 +35,8 @@ rawset(_G, "CheckInvincibility", function(p)
 			return true
 		end
 	end
-	return false
-end)
+	return CI(p)
+end
 
 local cv_showitemtimers = CV_RegisterVar({
     name = "showitemtimersplustsr",
