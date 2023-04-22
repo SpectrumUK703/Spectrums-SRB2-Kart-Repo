@@ -15,8 +15,18 @@ rawset(_G, "CheckInvincibility", function(p)
 	return false
 end)
 
+local cv_showitemtimers = CV_RegisterVar({
+    name = "showitemtimersplustsr",
+    defaultvalue = "Yes",
+    possiblevalue = CV_YesNo,
+})
+
 addHook("ThinkFrame", function()
 	if not tsrb2kr then return end
+	local HQitemtimers = CV_FindVar("showitemtimers")
+	if consoleplayer and HQitemtimers and HQitemtimers.value
+		COM_BufInsertText(consoleplayer, "showitemtimers off;showitemtimersplustsr on")
+	end
 	for p in players.iterate
 		if p.mo and p.mo.valid and p.mo.tsr_ultimateon
 			if p.oldtsrultimategauge ~= nil and p.tsr.teamultimate ~= nil
@@ -29,8 +39,6 @@ addHook("ThinkFrame", function()
 		end
 	end
 end)
-
-local cv_showitemtimers = CV_FindVar("showitemtimers")
 
 local cache = {}
 
