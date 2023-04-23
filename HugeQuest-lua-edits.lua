@@ -89,7 +89,7 @@ hud.add(function(v,p,c)
 			{
                 name = "shoe",
                 timer = p.kartstuff[k_sneakertimer],
-				hqsuperflag = not (tsrb2kr and p.mo.tsr_ultimateon),
+				hqsuperflag = not (tsrb2kr and p.mo and p.mo.valid and p.mo.tsr_ultimateon),
                 patches = {"K_ISSHOE"},
                 anim_frames = 1
             },
@@ -146,7 +146,7 @@ hud.add(function(v,p,c)
 			{
                 name = "teamultimate",
                 timer = (tsrb2kr and p.tsr and p.tsr.teamultimate and p.tsrultimatedepletion and p.tsr.teamultimate/p.tsrultimatedepletion) or 0,
-				hqsuperflag = (tsrb2kr and p.mo.tsr_ultimateon),
+				hqsuperflag = (tsrb2kr and p.mo and p.mo.valid and p.mo.tsr_ultimateon),
                 patches = {"K_HMTSR1", "K_HMTSR2"},
                 anim_frames = 1
             }
