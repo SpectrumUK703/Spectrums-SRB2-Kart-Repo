@@ -16,12 +16,6 @@ local funny_hyu = CV_RegisterVar({
 	possiblevalue = CV_OnOff
 })
 
-local funny_hyu_debug = CV_RegisterVar({
-	name = "funny_hyu_debug",
-	defaultvalue = "Off",
-	possiblevalue = CV_OnOff
-})
-
 local funny_hyu_counter = 0
 
 addHook("NetVars", function(net)
@@ -30,23 +24,22 @@ end)
 
 addHook("ThinkFrame", do
 	local hyudoroplayer
-	for p in players.iterate
-		if not (p.mo and p.mo.valid)
-		or p.spectator
-		or p.playerstate != PST_LIVE then continue end
-		local ks = p.kartstuff
-		if funny_hyu.value and ks[k_stolentimer] and ks[k_stolentimer] > HALFTICRATE-2 
-		and (not funny_hyu_counter or P_RandomChance(FRACUNIT - FRACUNIT/(funny_hyu_counter+1)))
-			ks[k_itemblink] = HALFTICRATE
-			ks[k_itemtype] = KITEM_HYUDORO
-			ks[k_itemamount] = 1
-			funny_hyu_counter = $+1
-			hyudoroplayer = p
-			if funny_hyu_debug.value
-				print("funny_hyu_counter: "..funny_hyu_counter)
+	if funny_hyu.value
+		for p in players.iterate
+			if not (p.mo and p.mo.valid)
+			or p.spectator
+			or p.playerstate != PST_LIVE then continue end
+			local ks = p.kartstuff
+			if ks[k_stolentimer] and ks[k_stolentimer] > HALFTICRATE-2 
+			and (not funny_hyu_counter or P_RandomChance(FRACUNIT - FRACUNIT/(funny_hyu_counter+1)))
+				ks[k_itemblink] = HALFTICRATE
+				ks[k_itemtype] = KITEM_HYUDORO
+				ks[k_itemamount] = 1
+				funny_hyu_counter = $+1
+				hyudoroplayer = p
+			elseif ks[k_itemtype] == KITEM_HYUDORO
+				hyudoroplayer = p
 			end
-		elseif ks[k_itemtype] == KITEM_HYUDORO
-			hyudoroplayer = p
 		end
 	end
 	if not hyudoroplayer
