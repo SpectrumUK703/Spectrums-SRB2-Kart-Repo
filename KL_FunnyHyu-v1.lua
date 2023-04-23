@@ -45,7 +45,6 @@ addHook("ThinkFrame", do
 			if funny_hyu_debug.value
 				print("funny_hyu_counter: "..funny_hyu_counter)
 			end
-			break
 		elseif ks[k_itemtype] == KITEM_HYUDORO
 			hyudoroplayer = p
 		end
