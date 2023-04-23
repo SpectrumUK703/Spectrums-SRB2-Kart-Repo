@@ -48,6 +48,7 @@ addHook("ThinkFrame", do
 			break
 		elseif ks[k_itemtype] == KITEM_HYUDORO
 			hyudoroplayer = p
+			break
 		end
 	end
 	if not hyudoroplayer
