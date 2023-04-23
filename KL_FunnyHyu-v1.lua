@@ -45,7 +45,7 @@ addHook("ThinkFrame", do
 	if not hyudoroplayer
 		funny_hyu_counter = 0
 	end
-	if hostmodload or not (server and HOSTMOD and CV_FindVar("hm_scoreboard") and leveltime > TICRATE) then return end
+	if hostmodload or not (server and HOSTMOD and leveltime > TICRATE) then return end
 	HM_Scoreboard_AddMod({disp = "Funny Hyu", var = "funny_hyu"})
 	hostmodload = true
 end)
