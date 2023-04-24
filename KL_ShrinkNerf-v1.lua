@@ -32,10 +32,12 @@ addHook("ThinkFrame", function()
 	for p in players.iterate
 		local ks = p.kartstuff
 		if ks[k_growshrinktimer] < 0
-			if ks[k_position]-1 <= playercount/5
-				p.shrinknerfed = true
-			elseif not p.shrinknerfed
-				if stripitems
+			if not p.shrinknerfed
+				if ks[k_position]-1 <= playercount/5
+					if p.mo and p.mo.valid
+						P_DamageMobj(p.mo)
+					end
+				elseif stripitems
 					ks[k_growshrinktimer] = -1
 				else
 					if p.shrinknerfsaveditem and p.shrinknerfsaveditem[1] and p.shrinknerfsaveditem[2]
