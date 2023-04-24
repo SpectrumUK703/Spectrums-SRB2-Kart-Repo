@@ -12,12 +12,20 @@ local shrink_nerf = CV_RegisterVar({
 })
 
 addHook("ThinkFrame", function()
-	if G_BattleGametype() then return end
-	if not shrink_nerf.value then return end
+	if leveltime < TICRATE or G_BattleGametype() or not shrink_nerf.value
+		for p in players.iterate
+			p.shrinknerfed = true
+			p.shrinknerfsaveditem = {}
+		end
+		return
+	end
 	local playercount
 	for p in players.iterate
 		if p.mo and p.mo.valid and not p.spectator
 			playercount = $ and $+1 or 1
+		else
+			p.shrinknerfed = true
+			p.shrinknerfsaveditem = {}
 		end
 	end
 	local stripitems = P_RandomChance(FRACUNIT/2)
