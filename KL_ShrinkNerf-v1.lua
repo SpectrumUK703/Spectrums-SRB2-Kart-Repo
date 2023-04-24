@@ -1,6 +1,7 @@
 local k_itemtype = k_itemtype
 local k_growshrinktimer = k_growshrinktimer
 local k_itemamount = k_itemamount
+local k_position = k_position
 local hostmodload = false
 
 local shrink_nerf = CV_RegisterVar({
@@ -11,12 +12,21 @@ local shrink_nerf = CV_RegisterVar({
 })
 
 addHook("ThinkFrame", function()
+	if G_BattleGametype() then return end
 	if not shrink_nerf.value then return end
+	local playercount
+	for p in players.iterate
+		if p.mo and p.mo.valid and not p.spectator
+			playercount = $ and $+1 or 1
+		end
+	end
 	local stripitems = P_RandomChance(FRACUNIT/2)
 	for p in players.iterate
 		local ks = p.kartstuff
 		if ks[k_growshrinktimer] < 0
-			if not p.shrinknerfed
+			if ks[k_position]-1 <= playercount/5
+				p.shrinknerfed = true
+			elseif not p.shrinknerfed
 				if stripitems
 					ks[k_growshrinktimer] = -1
 				else
