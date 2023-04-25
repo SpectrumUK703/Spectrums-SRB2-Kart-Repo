@@ -139,10 +139,7 @@ tsrb2kr.HUD_DrawItems = function(v, p)
 
 	-- special case: eggbox timer
 	if (p.kartstuff[k_eggmanexplode] > 1)
-		local egglimit = 3
-		if eggpanic
-			egglimit = 5
-		end
+		local egglimit = (eggpanic and 5) or 3
 		v.draw(x+(splitscreen > 1 and 16 or 17), y+(splitscreen > 1 and 11 or 13), v.cachePatch("K_EGGN"..min(egglimit, G_TicsToSeconds(p.kartstuff[k_eggmanexplode]))), flags)
 	end
 
