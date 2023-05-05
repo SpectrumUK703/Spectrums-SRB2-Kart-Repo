@@ -1,0 +1,46 @@
+LEVEL WE
+LevelName = SCALE THE STAIRS
+NoZone = 1
+SubTitle = (Sf) respawn in console (~)
+TypeOfLevel = Race
+RecordAttack = true
+NoVisitNeeded = true
+NumLaps = 2
+Music = GAMER
+Hidden = 1
+Lua.bluhori_hforce = 340
+Lua.therealstairs = 1
+Lua.hmt_yesgrief = 1
+Lua.hmt_timelimit = 15
+Lua.cvarchange = antigrief,0
+NextLevel = WG
+
+LEVEL WG
+LevelName = Spiral Crazy
+NoZone = 1
+SubTitle = (Sf) idk - mitsuo0221
+TypeOfLevel = Race
+RecordAttack = true
+NoVisitNeeded = true
+NumLaps = 15
+Music = MSPIRE
+Lua.bluhori_hforce = 80
+Lua.cvarchange = antigrief,0
+Hidden = 1
+Lua.spiral = 1
+NextLevel = WJ
+
+LEVEL WJ
+LevelName = Second Set of Stairs
+NoZone = 1
+Subtitle = (Sf) TOURNAMENT EDITION
+TypeOfLevel = Race
+RecordAttack = true
+NoVisitNeeded = true
+NumLaps = 3
+Music = STTRU
+Hidden = 1
+NextLevel = 1
+Lua.tour_stairs = 1
+Lua.cvarchange = antigrief,0
+Lua.bluhori_hforce = 232
