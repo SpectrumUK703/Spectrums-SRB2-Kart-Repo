@@ -1,0 +1,27 @@
+LEVEL V8
+LevelName = Wii Luigi Circuit
+NoZone = true
+Subtitle = MK Revamp
+TypeOfLevel = Race
+RecordAttack = true
+NumLaps = 3
+SkyNum = 91
+NextLevel = 1
+Hidden = True
+Lua.Kartsoundscapes = true
+Lua.Finallapmusic = true
+Lua.Normalmusic = MAPV8M
+Lua.Finallap = MAPV8F
+Lua.Glidermusic = true
+Lua.Normalglider = MAPV8M
+Lua.Finalglider = MAPV8F
+
+LEVEL KP
+LevelName = Omega Rainbow
+SubTitle = VGA Cup FINAL
+ZoneTitle = Road
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 1018
+Music = OMGARR
+Hidden = True
