@@ -6,6 +6,7 @@ local RESTORE_TIME= 300*TICRATE
 
 local CV_TO_CHANGE={
     {cvname="hq_superform", value= "off", map= "PY"},
+    {cvname="kartfrantic", value= "on", map= "PY"},
     {cvname="karteliminatelast", value= "off", map= "ZL"},	
 }
 
