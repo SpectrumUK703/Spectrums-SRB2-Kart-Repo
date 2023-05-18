@@ -88,5 +88,5 @@ addHook("ThinkFrame", function()
     --end
 end)
 
-addHook("IntermissionThinker", restoreCV())
-addHook("VoteThinker", restoreCV())
+addHook("IntermissionThinker", restoreCV)
+addHook("VoteThinker", restoreCV)
