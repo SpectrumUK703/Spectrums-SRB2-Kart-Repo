@@ -1,0 +1,1 @@
+rawset(_G, "commtable", {})
