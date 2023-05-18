@@ -1,11 +1,12 @@
 
 
-local MAP_ID= "PY"
+--local MAP_ID= "PY"
 
 local RESTORE_TIME= 300*TICRATE
 
 local CV_TO_CHANGE={
-    {cvname="hq_superform", value= "off"},
+    {cvname="hq_superform", value= "off", map= "PY"},
+    {cvname="karteliminatelast", value= "off", map= "ZL"},	
 }
 
 
@@ -32,18 +33,22 @@ end
 local CV_Backups= nil
 
 local function backupAndChangeCV()
-    if not CV_Backups then
+    /*if not CV_Backups then
         CV_Backups= {}
-    end
+    end*/
+
+    local ID = getMapID(gamemap) 
 
     for i=1,#CV_TO_CHANGE do
         local obj= CV_TO_CHANGE[i]
+        if ID ~= obj.map then continue end
         local cv= CV_FindVar(obj.cvname)
         if not cv then
             print("ERROR - Counldn't access CVar '"..obj.cvname.."'...")
             continue
         end
 
+        CV_Backups = $ or {}
         CV_Backups[obj.cvname]= cv.value
 
         COM_BufInsertText(server,obj.cvname.." "..obj.value)
@@ -72,14 +77,14 @@ addHook("ThinkFrame", function()
         restoreCV()
     end
     
-    if getMapID(gamemap)==MAP_ID then
+    --if getMapID(gamemap)==MAP_ID then
         if leveltime==1 then
             backupAndChangeCV()
         end
         if leveltime==RESTORE_TIME then
             restoreCV()
         end
-    end
+    --end
 end)
 
 addHook("IntermissionThinker", restoreCV())
