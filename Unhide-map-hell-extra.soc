@@ -1,0 +1,422 @@
+##ArcadePak
+LEVEL E0
+LevelName = Jungle Fort Long
+SubTitle = BONUS - Unreleased 2019 Track
+LevelSelect = 1
+TypeOfLevel = Race
+RecordAttack = True
+NoVisitNeeded = True
+NoZone = True
+NumLaps = 2
+SkyNum = 117
+Music = XSQONE
+SkyboxScale = 0
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+
+##Dreamscape Gardens
+Level OI
+LevelName = KAR Drag
+ZoneTitle = Race 3
+Subtitle = HELP
+NumLaps = 1
+SkyNum = 415
+TypeOfLevel = Race
+Music = KARDR
+SkyboxScale = 16
+Mobjscale = 3*FRACUNIT/4
+SectionRace = True
+Hidden = false
+lua.arcadetime = 35
+lua.arcadebonus = 25
+
+##GoldenSunMap
+Level 96
+LevelName = All Lighthouse
+SubTitle = Golden Sun HELL
+TypeOfLevel = Race
+NumLaps = 4
+SkyNum = 93
+mobjscale = FRACUNIT*100/105
+Music = GOLDE
+hidden = false
+Weather = 1
+RecordAttack = true
+NoVisitNeeded = true
+SectionRace = true
+
+##Nova Pack
+LEVEL BX
+LevelName = National Park
+SubTitle = Hope you stocked up on Repels
+NoZone = true
+LevelSelect = 6
+Music = KMAPBX
+TypeOfLevel = Race
+RecordAttack = True
+NoVisitNeeded = True
+NumLaps = 15
+Hidden = false
+SkyNum = 9393
+
+##SMK Electric Boogaloo
+Level Z9
+LevelName = SMK Rainbow
+ZoneTitle = Road
+Act = 2
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 5
+SkyNum = 46
+SkyboxScaleZ = 0
+Music = KMAPHD
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+
+##TG Cup
+Level VW
+LevelName = Cliffside Castle
+Subtitle = MAP HELL
+Music = LEGOR7
+TypeOfLevel = RACE
+ZoneTitle = Hell
+NextLevel = VM
+Hidden = false
+SkyNum = 2
+RecordAttack = true
+NoVisitNeeded = true
+MobjScale = 7*FRACUNIT/8
+NumLaps = 5
+
+##Insanity Pack
+Level HI
+LevelName = Daytona Hell
+SubTitle = ~Eternal Suffering~
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 20
+Music = DAY
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+NextLevel = EVALUATION
+
+##Baguette Pack
+Level FE
+LevelName = 2Fort
+ZoneTitle = V_Big
+SubTitle = Team_Fortress
+TypeOfLevel = Battle
+SkyNum = 1
+Music = TFBATT
+Hidden = false
+
+Level XQ
+LevelName = Oxdeadbeef
+ZoneTitle = !
+SubTitle = MeatBoy secret
+TypeOfLevel = Race
+NumLaps = 1
+SkyNum = 12
+Music = MEAT7
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+
+Level NH
+LevelName = Wario's Challenge
+SubTitle = WarioWare
+TypeOfLevel = Race
+NumLaps = 1
+SkyNum = 117
+Music = WADELU
+Hidden = false
+Weather = 0
+RecordAttack = true
+NoVisitNeeded = true
+SectionRace = true
+
+##Barkpark
+Level FN
+LevelName = Unist Hell
+Nozone = true
+Subtitle = Melty Bathroom Tournament
+Music = NAHR
+TypeofLevel = Race
+NextLevel = 01
+RecordAttack = True
+NoVisitNeeded = True
+SkyNum = 109
+Hidden = false
+NumLaps = 5
+
+##Bowler's Pack
+Level SZ
+LevelName = BOWLING ALLEY
+SubTitle = Bowling Cup FINAL
+TypeOfLevel = Race
+RecordAttack = True
+NoVisitNeeded = True
+NumLaps = 2
+SkyNum = 87
+SkyboxScale = 16
+NoZone = 1
+NextLevel = 01
+Music = KMAPSZ
+Hidden = false
+Lua.frictionfix = true
+
+LEVEL SJ
+LevelName = Vanilla Zig
+ZoneTitle = Zag
+SubTitle = MARI HELL
+TypeOfLevel = Race
+RecordAttack = true
+NoVisitNeeded = true
+NumLaps = 3
+SkyNum = 45
+SkyboxScale = 128
+Music = KMAPSJ
+Hidden = false
+Lua.BackTrack = True
+lua.arcadetime = 80
+lua.arcadebonus = 35
+
+##Hourglass Pack
+Level SH
+LevelName = Mafia Town
+SubTitle = Hourglass cup 1
+TypeOfLevel = Race
+NumLaps = 1
+SkyNum = 91
+mobjscale = FRACUNIT*75/100
+Music = HOUR1
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+SectionRace = true
+
+##Omega Tracks
+LEVEL ZZ
+LevelName = Unused Podium
+SubTitle = what the fuck logan
+ZoneTitle = Map
+TypeOfLevel = Race
+NumLaps = 20
+SkyNum = 1
+Music = UPODIM
+Hidden = false
+NextLevel = 1
+
+##Pizza Tower Pack
+Level RO
+LevelName = Final Tower
+NoZone = true
+SubTitle = Pizza Tower Finale
+TypeOfLevel = Race
+NumLaps = 14
+SkyNum = 2002
+Music = FINPI1
+NextLevel = IZ
+mobjscale = FRACUNIT*80/100
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+
+Level RQ
+LevelName = VS Pizzaface
+NoZone = true
+SubTitle = WORK IN PROGRESS
+TypeOfLevel = Race
+NumLaps = 1
+SkyNum = 2002
+Music = FINPI1
+mobjscale = FRACUNIT*100/100
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+
+##Abstraction Pack
+Level ZL
+LevelName = Flesh Eden
+NoZone = true
+SubTitle = BOSS FIGHT
+TypeOfLevel = Race
+NumLaps = 1
+SkyNum = 867
+Music = FLEDN
+Weather = PRECIP_STORM_NORAIN
+Hidden = false
+#Countdown = 9450
+NextLevel = CREDITS
+lua.arcadetime = 260
+lua.arcadebonus = 10
+Lua.BrightSigns = true
+lua.edenboss = true
+lua.nonewflp = true
+
+##Cotopack
+Level RK
+LevelName = Delfino Plaza
+NoZone = True
+subTitle = Jail Cup
+TypeOfLevel = Race
+Hidden = false
+NumLaps = 3
+RecordAttack = True
+SkyNum = 1
+NextLevel = 1
+
+##Dig Pack
+LEVEL OK
+LevelName = Pridemoor Classic
+NoZone = True
+SubTitle = Dig Pack Classic
+TypeOfLevel = Race
+RecordAttack = True
+Hidden = false
+NumLaps = 2
+SkyNum = 588
+Music = MAPDBM
+NextLevel = 1
+
+##Baguette Pack conflicts with Dig Pack
+##LEVEL MU
+##LevelName = Funny Avenue
+##SubTitle = 4 hour map jam
+##NoZone = True
+##TypeOfLevel = Race
+##RecordAttack = True
+##Hidden = false
+##NumLaps = 5
+##SkyNum = 190
+##Music = MAPMUM
+##RecordAttack = true
+##NoVisitNeeded = true
+##NextLevel = 1
+
+##Element Driftways
+Level AM
+LevelName = SM Special
+ZoneTitle = Stage
+Act = 7
+Hidden = false
+SubTitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 4
+MobjScale = 7*FRACUNIT/10
+SkyNum = 706
+SkyboxScale = 128
+Music = KMAP47
+RecordAttack = true
+
+Level H9
+LevelName = PWR Retro
+ZoneTitle = Maze Classic
+Subtitle = MAP HELL
+TypeOfLevel = Race
+NumLaps = 3
+MobjScale = 7*FRACUNIT/8
+SkyNum = 8
+Music = KMAPH9
+Hidden = false
+RecordAttack = true
+NoVisitNeeded = true
+NextLevel = 1
+
+##fuckpak
+LEVEL IW
+LevelName = A E S T H E T I C
+ZoneTitle = Touge
+SubTitle = (Ra) /music plays
+TypeOfLevel = Race
+RecordAttack = true
+NoVisitNeeded = true
+NumLaps = 3
+Hidden = false
+Music = KMAPIW
+NextLevel = WE
+
+##Aparte Cup (latpack)
+LEVEL 81
+LEVELNAME = MONOCHROME RIFT
+SUBTITLE = MAP HELL !?
+HIDDEN = false
+RECORDATTACK = TRUE
+NOVISITNEEDED = 3
+NUMLAPS = 3
+SKYNUM = 469
+TYPEOFLEVEL = SOLO,RACE
+MUSIC = AUTMAT
+LUA.monochrome = true
+
+Level 91
+LevelName = Midnight Channel
+ZoneTitle = Classic
+NoZone = true
+SubTitle = MAP HELL
+TypeOfLevel = Race,TV
+NumLaps = 2
+Music = KMAP30
+RecordAttack = true
+NoVisitNeeded = true
+HIDDEN = false
+NextLevel = EVALUATION
+
+##Masters Pack
+Level Ky
+LevelName = Lake Margorite
+NoZone = 0
+Zonetitle = Classic
+SubTitle = MK HELL
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 188
+Music = mapkym
+Nextlevel = k0
+RecordAttack = true
+Hidden = false
+
+Level Kz
+LevelName = Verdant Raceway
+NoZone = 0
+Zonetitle = Classic
+SubTitle = MK HELL
+TypeOfLevel = Race
+NumLaps = 4
+SkyNum = 2735
+Music = mapkzm
+Nextlevel = k0
+RecordAttack = true
+Hidden = false
+
+##Turbo Flash
+Level V5
+LevelName = Green Park
+Zonetitle = Classic
+SubTitle = MAP HELL
+Hidden = false
+TypeOfLevel = Race
+NumLaps = 2
+SkyNum = 14
+Music = GRNPRK
+LevelSelect = V5
+RecordAttack = true
+NextLevel = V0
+NoVisitNeeded = true
+
+##Yellow's Track Collection
+Level UZ
+LevelName = Digital Botany
+SubTitle = MAP HELL
+TypeOfLevel = Race
+Numlaps	= 3
+SkyNum = 5243
+Music = MAPUZM
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+NextLevel = OV
+lua.speedpadstoring = true
