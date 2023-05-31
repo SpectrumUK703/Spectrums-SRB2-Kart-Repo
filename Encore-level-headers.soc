@@ -1,0 +1,70 @@
+LEVEL IX
+LevelName = Desert Bus R
+NoZone = 1
+Subtitle = (Ra) Mundane, isn't it?
+TypeOfLevel = Race
+RecordAttack = true
+NoVisitNeeded = true
+NumLaps = 15
+Music = KMAPWI
+SkyNum = 3021
+MobjScale = FRACUNIT/4
+SkyboxScale = 256
+NextLevel = 1
+lua.altermap = true
+lua.altermapsky = 3023
+lua.altermapexecute = 2
+lua.altermapflats = BB_SANDA,SNOW01,BB_SANDB,SNOW02,ACZFLR24,ICEFLR0
+lua.altermaptextures = DBUSBG1,EBUSBG1,DBUSBG2,EBUSBG2,DBUSBG3,EBUSBG3,ACZROCK3,ICEWALL9
+Lua.desertbus = 1
+Lua.encorettl = Snowy Bus R
+Lua.encoresub = (Ra) Oo, snow!
+
+Level FG
+LevelName = Gay Energy
+SubTitle = Fickle Jokes 1
+TypeOfLevel = Race
+Music = CANDY
+NumLaps = 3
+MobjScale = 4*FRACUNIT/5
+SkyNum = 118
+SkyboxScale = 8
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+Lua.encorettl = Trans Energy
+
+Level YY
+LevelName = VB Raceway
+SubTitle = Melon Pack
+TypeOfLevel = Race
+NumLaps = 5
+SkyNum = 461
+Palette = 6970
+EncorePal = 6973
+MobjScale = FRACUNIT*7/9
+Lua.encorettl = GB Raceway
+
+Level 1
+LevelName = Green Hills
+SubTitle = Ring Cup 1
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 88
+Music = KMAP01
+RecordAttack = true
+NoVisitNeeded = true
+Lua.encorettl = Winter Hills
+
+Level 2
+LevelName = Dark Race
+NoZone = true
+SubTitle = Ring Cup 2
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 88
+Music = KMAP02
+RecordAttack = true
+NoVisitNeeded = true
+Lua.encorettl = Hero Race
+
