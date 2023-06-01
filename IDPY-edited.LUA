@@ -7,7 +7,9 @@ local RESTORE_TIME= 300*TICRATE
 local CV_TO_CHANGE={
     {cvname="hq_superform", value= "off", map= "PY"},
     {cvname="kartfrantic", value= "on", map= "PY"},
-    {cvname="karteliminatelast", value= "off", map= "ZL"},	
+    {cvname="karteliminatelast", value= "off", map= "ZL"},
+    {cvname="kmp_slowspinout", value= "off", map= "FN"},
+    {cvname="fd_hitkill", value= "off", map= "FN"},
 }
 
 
@@ -79,7 +81,7 @@ addHook("ThinkFrame", function()
     end
     
     --if getMapID(gamemap)==MAP_ID then
-        if leveltime==1 then
+        if leveltime==10 then
             backupAndChangeCV()
         end
         if leveltime==RESTORE_TIME then
