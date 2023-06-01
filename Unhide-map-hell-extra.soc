@@ -31,21 +31,6 @@ Hidden = false
 lua.arcadetime = 35
 lua.arcadebonus = 25
 
-##GoldenSunMap
-Level 96
-LevelName = All Lighthouse
-SubTitle = Golden Sun HELL
-TypeOfLevel = Race
-NumLaps = 4
-SkyNum = 93
-mobjscale = FRACUNIT*100/105
-Music = GOLDE
-hidden = false
-Weather = 1
-RecordAttack = true
-NoVisitNeeded = true
-SectionRace = true
-
 ##Nova Pack
 LEVEL BX
 LevelName = National Park
@@ -113,18 +98,6 @@ SkyNum = 1
 Music = TFBATT
 Hidden = false
 
-Level XQ
-LevelName = Oxdeadbeef
-ZoneTitle = !
-SubTitle = MeatBoy secret
-TypeOfLevel = Race
-NumLaps = 1
-SkyNum = 12
-Music = MEAT7
-RecordAttack = true
-NoVisitNeeded = true
-Hidden = false
-
 Level NH
 LevelName = Wario's Challenge
 SubTitle = WarioWare
@@ -138,36 +111,7 @@ RecordAttack = true
 NoVisitNeeded = true
 SectionRace = true
 
-##Barkpark
-Level FN
-LevelName = Unist Hell
-Nozone = true
-Subtitle = Melty Bathroom Tournament
-Music = NAHR
-TypeofLevel = Race
-NextLevel = 01
-RecordAttack = True
-NoVisitNeeded = True
-SkyNum = 109
-Hidden = false
-NumLaps = 5
-
 ##Bowler's Pack
-Level SZ
-LevelName = BOWLING ALLEY
-SubTitle = Bowling Cup FINAL
-TypeOfLevel = Race
-RecordAttack = True
-NoVisitNeeded = True
-NumLaps = 2
-SkyNum = 87
-SkyboxScale = 16
-NoZone = 1
-NextLevel = 01
-Music = KMAPSZ
-Hidden = false
-Lua.frictionfix = true
-
 LEVEL SJ
 LevelName = Vanilla Zig
 ZoneTitle = Zag
