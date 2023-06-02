@@ -51,16 +51,3 @@ Hidden = false
 RecordAttack = true
 NoVisitNeeded = true
 NextLevel = 1
-
-Level HB
-Levelname = Black Bliss
-Nozone = 1
-NumLaps = 4
-TypeOfLevel = Race
-Music = KMAPHB
-Nextlevel = 1
-Skynum = 11
-RecordAttack = True
-Hidden = false
-Weather = Precip_Rain
-Subtitle = MAP HELL
