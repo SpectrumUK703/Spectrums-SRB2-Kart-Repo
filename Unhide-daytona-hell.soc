@@ -1,0 +1,11 @@
+Level HI
+LevelName = Daytona Hell
+SubTitle = ~Eternal Suffering~
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 20
+Music = DAY
+RecordAttack = true
+NoVisitNeeded = true
+Hidden = false
+NextLevel = EVALUATION
