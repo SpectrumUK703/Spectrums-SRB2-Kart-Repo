@@ -1,16 +1,52 @@
 local kodapulse = CV_RegisterVar({
 	name = "kodapulse",
 	defaultvalue = "Off",
-	flags = 0,
 	possiblevalue = CV_OnOff
 })
 
 local kodatable = {}
 local HYPRtable = {}
+local floortable = {}
+local ceilingtable = {}
+local pairs = pairs
+local tostring = tostring
+local R_TextureNumForName = R_TextureNumForName
+local insert = insert
+local sub = sub
+local iterate = iterate
+local table = table
+local floorpic = floorpic
+local ceilingpic = ceilingpic
+local toptexture = toptexture
+local midtexture = midtexture
+local bottomtexture = bottomtexture
 
-addHook("PreThinkFrame", function(mapnum)
+addHook("ThinkFrame", do
+	local time = leveltime
+	if not (time%4)
+		local quartertime = time/4
+		for k,v in pairs(floortable)
+			local sec = v[1]
+			local number = v[2]
+			sec.floorpic = "KODAP"..tostring(((213+number*3+(quartertime))%426)+1)
+		end
+		for k,v in pairs(ceilingtable)
+			local sec = v[1]
+			local number = v[2]
+			sec.ceilingpic = "KODAP"..tostring(((213+number*3+(quartertime))%426)+1)
+		end
+	end
+end)
+
+addHook("MapChange", function(mapnum)
+	floortable = {}
+	ceilingtable = {}
+end)
+
+addHook("MapLoad", function(mapnum)
+	floortable = {}
+	ceilingtable = {}
 	if not (FS_SHADOW and kodapulse.value) then return end --Is Fuckpak even added?
-	if leveltime then return end
 	if not kodatable[1]
 		for i=0, 31
 			if i < 10
@@ -23,35 +59,39 @@ addHook("PreThinkFrame", function(mapnum)
 		end
 	end
 	for sec in sectors.iterate do
-		local floorpic = sec.floorpic
-		local ceilingpic = sec.ceilingpic
-		if floorpic:sub(1,2) == "~0"
-			local numberstring = floorpic:sub(3,4)
+		local secfloorpic = sec.floorpic
+		local secceilingpic = sec.ceilingpic
+		if secfloorpic:sub(1,2) == "~0"
+			local numberstring = secfloorpic:sub(3,4)
 			local number = tonumber(numberstring)
 			if number ~= nil and number >= 0 and number <= 31
 				sec.floorpic = "HYPS"..numberstring
+				local sectable = {sec, number}
+				table.insert(floortable, sectable)
 			end
 		end
-		if ceilingpic:sub(1,2) == "~0"
-			local numberstring = ceilingpic:sub(3,4)
+		if secceilingpic:sub(1,2) == "~0"
+			local numberstring = secceilingpic:sub(3,4)
 			local number = tonumber(numberstring)
 			if number ~= nil and number >= 0 and number <= 31
 				sec.ceilingpic = "HYPS"..numberstring
+				local sectable = {sec, number}
+				table.insert(ceilingtable, sectable)
 			end
 		end
 	end
 	for side in sides.iterate do
-		local toptexture = side.toptexture
-		local midtexture = side.midtexture
-		local bottomtexture = side.bottomtexture
-		for k,v in ipairs(kodatable)
-			if toptexture == v
+		local sidetoptexture = side.toptexture
+		local sidemidtexture = side.midtexture
+		local sidebottomtexture = side.bottomtexture
+		for k,v in pairs(kodatable)
+			if sidetoptexture == v
 				side.toptexture = HYPRtable[k]
 			end
-			if midtexture == v
+			if sidemidtexture == v
 				side.midtexture = HYPRtable[k]
 			end
-			if bottomtexture == v
+			if sidebottomtexture == v
 				side.bottomtexture = HYPRtable[k]
 			end
 		end
