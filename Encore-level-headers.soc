@@ -1,25 +1,3 @@
-LEVEL IX
-LevelName = Desert Bus R
-NoZone = 1
-Subtitle = (Ra) Mundane, isn't it?
-TypeOfLevel = Race
-RecordAttack = true
-NoVisitNeeded = true
-NumLaps = 15
-Music = KMAPWI
-SkyNum = 3021
-MobjScale = FRACUNIT/4
-SkyboxScale = 256
-NextLevel = 1
-lua.altermap = true
-lua.altermapsky = 3023
-lua.altermapexecute = 2
-lua.altermapflats = BB_SANDA,SNOW01,BB_SANDB,SNOW02,ACZFLR24,ICEFLR0
-lua.altermaptextures = DBUSBG1,EBUSBG1,DBUSBG2,EBUSBG2,DBUSBG3,EBUSBG3,ACZROCK3,ICEWALL9
-Lua.desertbus = 1
-Lua.encorettl = Snowy Bus R
-Lua.encoresub = (Ra) Oo, snow!
-
 Level FG
 LevelName = Gay Energy
 SubTitle = Fickle Jokes 1
