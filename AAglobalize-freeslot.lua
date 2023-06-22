@@ -16,15 +16,14 @@ rawset(_G, "freeslot", function(...)
 	for i = 1, #args do
 
 		-- spr2 does some weird things here so let's leave it out for now.
-		if string.upper(args[i]:sub(1, 5)) == "SPR2_"
+		--Either I've fixed whatever that was, or I haven't noticed it yet.
+		/*if string.upper(args[i]:sub(1, 5)) == "SPR2_"
 			continue
-		end
+		end*/
 
 		if string.upper(args[i]:sub(1, 4)) == "SFX_"
 			args[i] = string.lower(args[i])
-		elseif string.upper(args[i]:sub(1, 3)) == "MT_"
-		or string.upper(args[i]:sub(1, 4)) == "SPR_"
-		or string.upper(args[i]:sub(1, 2)) == "S_"
+		else
 			args[i] = string.upper(args[i])
 		end
 
