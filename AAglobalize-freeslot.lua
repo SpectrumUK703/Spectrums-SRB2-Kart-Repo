@@ -1,0 +1,37 @@
+local g = rawset
+
+local function table_pack(...)
+    return {n=select("#", ...), ...}
+end
+
+local fs = freeslot
+rawset(_G, "freeslot", function(...)
+
+	local args = {...}
+
+	-- call original freeslot function
+	local ints = table_pack(fs(unpack(args)))
+
+	-- globalize the results.
+	for i = 1, #args do
+
+		-- spr2 does some weird things here so let's leave it out for now.
+		if string.upper(args[i]:sub(1, 5)) == "SPR2_"
+			continue
+		end
+
+		if string.upper(args[i]:sub(1, 4)) == "SFX_"
+			args[i] = string.lower(args[i])
+		elseif string.upper(args[i]:sub(1, 3)) == "MT_"
+		or string.upper(args[i]:sub(1, 4)) == "SPR_"
+		or string.upper(args[i]:sub(1, 2)) == "S_"
+			args[i] = string.upper(args[i])
+		end
+
+		--print("Globalize... "..tostring(args[i]).."->"..tostring(_G[args[i]]))
+
+		g(_G, args[i], _G[args[i]])
+	end
+	
+	return unpack(ints)
+end)
