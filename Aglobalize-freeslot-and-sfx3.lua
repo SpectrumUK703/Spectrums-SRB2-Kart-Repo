@@ -37,7 +37,7 @@ rawset(_G, "freeslot", function(...)
 		--If you freeslot the same thing twice, the second freeslot returns the wrong value
 		table.insert(ints, rawget(_G, args[i]) or fs(args[i]))
 
-		print("Globalize... "..tostring(args[i]).."->"..tostring(_G[args[i]]))
+		--print("Globalize... "..tostring(args[i]).."->"..tostring(_G[args[i]]))
 
 		g(_G, args[i], _G[args[i]])
 	end
