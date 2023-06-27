@@ -10,6 +10,8 @@ local CV_TO_CHANGE={
     {cvname="karteliminatelast", value= "off", map= "ZL"},
     {cvname="fd_hitkill", value= "off", map= "FN"},
     {cvname="kmp_slowspinout", value= "off", map= "FN"},
+    {cvname="hq_superform", value= "off", map= "NQ"},
+    {cvname="stck_active", value= "off", map= "NQ"},
 }
 
 
