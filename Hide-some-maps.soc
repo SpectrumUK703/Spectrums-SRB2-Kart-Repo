@@ -1,0 +1,11 @@
+Level OD
+LevelName = A Bud
+ZoneTitle = Time
+TypeOfLevel = Race
+Hidden = true
+Subtitle = Aster Cup 3
+SkyNum = 419
+NumLaps = 3
+Music = MLVNA
+lua.arcadetime = 90
+lua.arcadebonus = 45
