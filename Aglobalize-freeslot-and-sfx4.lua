@@ -8,20 +8,20 @@ for i=1, #sfxinfo-1
 	g(_G, "sfx_"..v.name, i)
 end
 
-for i=1, #sprnames-1
-	local v = sprnames[i]
+for i=1, #spriteinfo
+	local v = sprnames[i-1]
 	if dprint
-		dprint("Globalize... SPR_"..v.."->"..i)
+		dprint("Globalize... SPR_"..v.."->"..i-1)
 	end
-	g(_G, "SPR_"..v, i)
+	g(_G, "SPR_"..v, i-1)
 end
 
-for i=1, #spr2names-1
-	local v = spr2names[i]
+for i=1, #spr2defaults
+	local v = spr2names[i-1]
 	if dprint
-		dprint("Globalize... SPR2_"..v.."->"..i)
+		dprint("Globalize... SPR2_"..v.."->"..i-1)
 	end
-	g(_G, "SPR2_"..v, i)
+	g(_G, "SPR2_"..v, i-1)
 end
 
 local function table_pack(...)
