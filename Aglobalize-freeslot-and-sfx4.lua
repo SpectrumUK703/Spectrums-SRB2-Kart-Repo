@@ -1,23 +1,28 @@
 local g = rawset
+local v
 
 for i=1, #sfxinfo-1
-	local v = sfxinfo[i]
+	v = sfxinfo[i]
 	if dprint
 		dprint("Globalize... sfx_"..v.name.."->"..i)
 	end
 	g(_G, "sfx_"..v.name, i)
 end
 
+v = nil
+
 for i=1, #spriteinfo
-	local v = sprnames[i-1]
+	v = sprnames[i-1]
 	if dprint
 		dprint("Globalize... SPR_"..v.."->"..i-1)
 	end
 	g(_G, "SPR_"..v, i-1)
 end
 
+v = nil
+
 for i=1, #spr2defaults
-	local v = spr2names[i-1]
+	v = spr2names[i-1]
 	if dprint
 		dprint("Globalize... SPR2_"..v.."->"..i-1)
 	end
