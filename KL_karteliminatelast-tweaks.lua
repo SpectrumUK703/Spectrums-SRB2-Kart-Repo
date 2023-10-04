@@ -30,7 +30,20 @@ local function theresultsarein(p)
 		S_StartSound(mo, sfx_klose)
 		local fakeplayer = P_SpawnMobj(mo.x, mo.y, mo.z, MT_THOK)
 		fakeplayer.skin = mo.skin
+		fakeplayer.state = mo.state
+		fakeplayer.flags = mo.flags
+		fakeplayer.flags2 = mo.flags2
+		fakeplayer.eflags = mo.eflags
+		fakeplayer.renderflags = mo.renderflags
 		fakeplayer.sprite = mo.sprite
+		fakeplayer.sprite2 = mo.sprite2
+		fakeplayer.momx = mo.momx
+		fakeplayer.momy = mo.momy
+		fakeplayer.momz = mo.momz
+		fakeplayer.pmomz = mo.pmomz
+		fakeplayer.friction = mo.friction
+		fakeplayer.scale = mo.scale
+		fakeplayer.destscale = mo.destscale
 		fakeplayer.color = mo.color
 		fakeplayer.frame = mo.frame
 		fakeplayer.angle = mo.angle
