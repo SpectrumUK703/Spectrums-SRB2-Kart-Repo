@@ -29,6 +29,9 @@ local function xitemHandler()
 			end
 			if (weathermod.current.id == 14 or (weathermod.current.id == 95 and weathermod.Disasterpick.effect == 5)) and replayplayback == false
 				player.xItemData.enableHud = false
+				if JUICEBOX and JUICEBOX.value
+					player.gatedecay = 0
+				end
 			else
 				player.xItemData.enableHud = true
 			end
