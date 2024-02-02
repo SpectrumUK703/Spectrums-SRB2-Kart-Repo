@@ -5,7 +5,10 @@ rawset(_G, "addHook", function(hook, fn, extra)
 	if hook == "MobjThinker" and extra == nil
 		for i=1, #mobjinfo
 			if mobjinfo[i-1] and not (mobjinfo[i-1].flags & MF_SCENERY)
-				addHook_vanilla(hook, fn, i-1)
+				addHook_vanilla(hook, function(mo)
+					if not (mo and mo.valid) then return end
+					return fn(mo)
+				end, i-1)
 			end
 		end
 	else
