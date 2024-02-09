@@ -6,6 +6,7 @@ local TICRATE = TICRATE
 local MFE_SPRUNG = MFE_SPRUNG
 local MF_SPRING = MF_SPRING
 local k_pogospring = k_pogospring
+local MF2_OBJECTFLIP = MF2_OBJECTFLIP
 local hostmodload
 
 local cv_jumpcorrection = CV_RegisterVar({
@@ -31,6 +32,7 @@ addHook("ThinkFrame", function()
 	local special
 	local totalboost
 	local table
+	local isrising
 	for p in players.iterate
 		p.jumpcorrectiontable = $ or {}
 		table = p.jumpcorrectiontable
@@ -42,9 +44,10 @@ addHook("ThinkFrame", function()
 		sector = P_ThingOnSpecial3DFloor(mo) or mo.subsector.sector
 		special = GetSecSpecial(sector.special, 3)
 		totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
+		isrising = ((mo.flags2 & MF2_OBJECTFLIP) and mo.momz < 0) or (not (mo.flags2 & MF2_OBJECTFLIP) and mo.momz > 0)
 		if not P_IsObjectOnGround(mo)
 			if not table.jumped
-			and totalboost > sneakerpower+FRACUNIT
+			and totalboost > sneakerpower+FRACUNIT and isrising
 			and not ((mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or special == 5 or table.springjump)
 				-- In the case of hardsneaker/firmsneaker, this is multiplying by (127.5%/150%)
 				newmomz = FixedDiv(FixedMul(mo.momz, FRACUNIT+sneakerpower), totalboost or 1)
