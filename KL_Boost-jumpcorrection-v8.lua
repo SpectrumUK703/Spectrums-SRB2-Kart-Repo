@@ -4,6 +4,7 @@ local k_boostpower = k_boostpower
 local FRACUNIT = FRACUNIT
 local TICRATE = TICRATE
 local MFE_SPRUNG = MFE_SPRUNG
+local MF_SPRING = MF_SPRING
 local hostmodload
 
 local cv_jumpcorrection = CV_RegisterVar({
@@ -68,10 +69,10 @@ addHook("ThinkFrame", function()
 	hostmodload = true
 end)
 
-local function springjumpcorrection(mo, pmo)
+local function springjumpcorrection(pmo, mo)
 	if not (cv_jumpcorrection.value 
-	and mo and mo.valid and pmo and pmo.valid 
-	and pmo.player)
+	and mo and mo.valid and pmo and pmo.valid and mo.health and pmo.health 
+	and pmo.player and (mo.flags & MF_SPRING))
 	or pmo.player.spectator
 	or abs(mo.z - pmo.z) > max(mo.height, pmo.height) then return end
 	local p = pmo.player
@@ -85,6 +86,9 @@ local function springjumpcorrection(mo, pmo)
 	and totalboost > sneakerpower+FRACUNIT
 	and not ((pmo.eflags & MFE_SPRUNG) or special == 5 or table.springjump)
 		local newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+sneakerpower), totalboost or 1)
+		--print(p.speed)
+		--print(newspeed)
+		--print("Spring jump corrected")
 		p.speed = newspeed
 		table.jumped = true
 		table.springjump = 10
@@ -92,14 +96,5 @@ local function springjumpcorrection(mo, pmo)
 	end
 end
 
-addHook("MobjCollide", springjumpcorrection, MT_REDDIAG)
-addHook("MobjCollide", springjumpcorrection, MT_YELLOWDIAG)
-addHook("MobjCollide", springjumpcorrection, MT_BLUEDIAG)
-freeslot("MT_GRAYDIAG")
-freeslot("MT_22_REDDIAG")
-freeslot("MT_22_YELDIAG")
-freeslot("MT_22_BLUDIAG")
-addHook("MobjCollide", springjumpcorrection, MT_GRAYDIAG)
-addHook("MobjCollide", springjumpcorrection, MT_22_REDDIAG)
-addHook("MobjCollide", springjumpcorrection, MT_22_YELDIAG)
-addHook("MobjCollide", springjumpcorrection, MT_22_BLUDIAG)
+addHook("MobjMoveCollide", springjumpcorrection, MT_PLAYER)
+addHook("MobjCollide", springjumpcorrection, MT_PLAYER)
