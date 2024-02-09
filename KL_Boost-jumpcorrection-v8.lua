@@ -88,6 +88,7 @@ local function springjumpcorrection(mo, pmo)
 		p.speed = newspeed
 		table.jumped = true
 		table.springjump = 10
+		return true
 	end
 end
 
