@@ -29,7 +29,8 @@ addHook("ThinkFrame", function()
 	local newmomz
 	local mo
 	local sector
-	local special
+	local dash
+	local bouncy
 	local totalboost
 	local table
 	local isrising
@@ -42,13 +43,14 @@ addHook("ThinkFrame", function()
 		if p.spectator
 		or not (mo and mo.valid) then continue end
 		sector = P_ThingOnSpecial3DFloor(mo) or mo.subsector.sector
-		special = GetSecSpecial(sector.special, 3)
+		dash = GetSecSpecial(sector.special, 3) == 5
+		bouncy = GetSecSpecial(sector.special, 1) == 15
 		totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
 		isrising = ((mo.flags2 & MF2_OBJECTFLIP) and mo.momz < 0) or (not (mo.flags2 & MF2_OBJECTFLIP) and mo.momz > 0)
 		if not P_IsObjectOnGround(mo)
 			if not table.jumped
 			and totalboost > sneakerpower+FRACUNIT and isrising
-			and not ((mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or special == 5 or table.springjump)
+			and not ((mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or table.springjump)
 				-- In the case of hardsneaker/firmsneaker, this is multiplying by (127.5%/150%)
 				newmomz = FixedDiv(FixedMul(mo.momz, FRACUNIT+sneakerpower), totalboost or 1)
 				--print(mo.momz)
@@ -63,7 +65,7 @@ addHook("ThinkFrame", function()
 			table.jumped = true
 		else
 			table.jumped = false
-			if (mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or special == 5
+			if (mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy
 				table.springjump = 10
 			end
 		end
@@ -84,11 +86,12 @@ local function springjumpcorrection(pmo, mo)
 	local table = p.jumpcorrectiontable
 	local sneakerpower = boosttable[gamespeed+1][p.SPSstackedpanels or 1]
 	local sector = P_ThingOnSpecial3DFloor(pmo) or pmo.subsector.sector
-	local special = GetSecSpecial(sector.special, 3)
+	local dash = GetSecSpecial(sector.special, 3) == 5
+	local bouncy = GetSecSpecial(sector.special, 1) == 15
 	local totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
 	if not table.jumped
 	and totalboost > sneakerpower+FRACUNIT
-	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or special == 5 or table.springjump)
+	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or table.springjump)
 		local newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+sneakerpower), totalboost or 1)
 		--print(p.speed)
 		--print(newspeed)
