@@ -26,11 +26,14 @@ local boosttable = {
 addHook("ThinkFrame", function()
 	if not cv_jumpcorrection.value then return end
 	local sneakerpower
+	local newmomx
+	local newmomy
 	local newmomz
 	local mo
 	local sector
 	local dash
 	local bouncy
+	local fuckingmushroom -- mushroom plunge lmao
 	local totalboost
 	local table
 	local isrising
@@ -45,13 +48,16 @@ addHook("ThinkFrame", function()
 		sector = P_ThingOnSpecial3DFloor(mo) or mo.subsector.sector
 		dash = GetSecSpecial(sector.special, 3) == 5
 		bouncy = GetSecSpecial(sector.special, 1) == 15
+		fuckingmushroom = GetSecSpecial(sector.special, 2)
 		totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
 		isrising = ((mo.flags2 & MF2_OBJECTFLIP) and mo.momz < 0) or (not (mo.flags2 & MF2_OBJECTFLIP) and mo.momz > 0)
 		if not P_IsObjectOnGround(mo)
 			if not table.jumped
 			and totalboost > sneakerpower+FRACUNIT and isrising
-			and not ((mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or table.springjump)
+			and not ((mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
 				-- In the case of hardsneaker/firmsneaker, this is multiplying by (127.5%/150%)
+				newmomx = FixedDiv(FixedMul(mo.momx, FRACUNIT+sneakerpower), totalboost or 1)
+				newmomy = FixedDiv(FixedMul(mo.momy, FRACUNIT+sneakerpower), totalboost or 1)
 				newmomz = FixedDiv(FixedMul(mo.momz, FRACUNIT+sneakerpower), totalboost or 1)
 				--print(mo.momz)
 				--print(p.kartstuff[k_speedboost])
@@ -59,13 +65,15 @@ addHook("ThinkFrame", function()
 				--print(totalboost)
 				--print(sneakerpower)
 				--print(newmomz)
+				mo.momx = ($+newmomx)/2
+				mo.momy = ($+newmomy)/2
 				P_SetObjectMomZ(mo, newmomz, false)
 				--print("Jump corrected")
 			end
 			table.jumped = true
 		else
 			table.jumped = false
-			if (mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy
+			if (mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5
 				table.springjump = 10
 			end
 		end
@@ -88,10 +96,11 @@ local function springjumpcorrection(pmo, mo)
 	local sector = P_ThingOnSpecial3DFloor(pmo) or pmo.subsector.sector
 	local dash = GetSecSpecial(sector.special, 3) == 5
 	local bouncy = GetSecSpecial(sector.special, 1) == 15
+	local fuckingmushroom = GetSecSpecial(sector.special, 2)
 	local totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
 	if not table.jumped
 	and totalboost > sneakerpower+FRACUNIT
-	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or table.springjump)
+	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
 		local newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+sneakerpower), totalboost or 1)
 		--print(p.speed)
 		--print(newspeed)
