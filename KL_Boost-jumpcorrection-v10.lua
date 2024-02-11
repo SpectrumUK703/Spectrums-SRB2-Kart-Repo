@@ -16,6 +16,13 @@ local cv_jumpcorrection = CV_RegisterVar({
     flags = CV_NETVAR,
 })
 
+local jumpcorrection_debug = CV_RegisterVar({
+    name = "jumpcorrection-debug",
+    defaultvalue = "Off",
+    possiblevalue = CV_OnOff,
+    flags = 0,
+})
+
 -- for stackable panels
 local boosttable = {
 	{ 53740+768, 75000, 87500},
@@ -59,16 +66,18 @@ addHook("ThinkFrame", function()
 				newmomx = FixedDiv(FixedMul(mo.momx, FRACUNIT+sneakerpower), totalboost or 1)
 				newmomy = FixedDiv(FixedMul(mo.momy, FRACUNIT+sneakerpower), totalboost or 1)
 				newmomz = FixedDiv(FixedMul(mo.momz, FRACUNIT+sneakerpower), totalboost or 1)
-				--print(mo.momz)
-				--print(p.kartstuff[k_speedboost])
-				--print(p.kartstuff[k_boostpower])
-				--print(totalboost)
-				--print(sneakerpower)
-				--print(newmomz)
+				if jumpcorrection_debug.value
+					print("mo.momz: "..mo.momz)
+					print("k_speedboost: "..p.kartstuff[k_speedboost])
+					print("k_boostpower: "..p.kartstuff[k_boostpower])
+					print("totalboost: "..totalboost)
+					print("sneakerpower: "..sneakerpower)
+					print("newmomz: "..newmomz)
+					print("Jump corrected")
+				end
 				mo.momx = ($+newmomx)/2
 				mo.momy = ($+newmomy)/2
 				P_SetObjectMomZ(mo, newmomz, false)
-				--print("Jump corrected")
 			end
 			table.jumped = true
 		else
@@ -103,9 +112,11 @@ local function springjumpcorrection(pmo, mo)
 	and totalboost > sneakerpower+FRACUNIT
 	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
 		local newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+sneakerpower), totalboost or 1)
-		--print(p.speed)
-		--print(newspeed)
-		--print("Spring jump corrected")
+		if jumpcorrection_debug.value
+			print(p.speed)
+			print(newspeed)
+			print("Spring jump corrected")
+		end
 		p.speed = newspeed
 		table.jumped = true
 		table.springjump = 10
