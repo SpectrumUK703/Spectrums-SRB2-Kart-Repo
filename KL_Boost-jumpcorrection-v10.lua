@@ -44,13 +44,12 @@ addHook("ThinkFrame", function()
 		table.springjump = $ and $-1 or 0
 		mo = p.mo
 		if p.spectator
-		or not (mo and mo.valid)
-		or mo.scale ~= FRACUNIT then continue end -- other scales are too hard to work with
+		or not (mo and mo.valid) then continue end
 		sector = P_ThingOnSpecial3DFloor(mo) or mo.subsector.sector
 		dash = GetSecSpecial(sector.special, 3) == 5
 		bouncy = GetSecSpecial(sector.special, 1) == 15
 		fuckingmushroom = GetSecSpecial(sector.special, 2)
-		totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
+		totalboost = FixedMul(p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower], mapobjectscale) -- this is probably dumb
 		isrising = mo.momz*P_MobjFlip(mo) > 0
 		if not P_IsObjectOnGround(mo)
 			if not table.jumped
@@ -99,7 +98,7 @@ local function springjumpcorrection(pmo, mo)
 	local dash = GetSecSpecial(sector.special, 3) == 5
 	local bouncy = GetSecSpecial(sector.special, 1) == 15
 	local fuckingmushroom = GetSecSpecial(sector.special, 2)
-	local totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
+	local FixedMul(p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower], mapobjectscale) -- this is probably dumb
 	if not table.jumped
 	and totalboost > sneakerpower+FRACUNIT
 	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
