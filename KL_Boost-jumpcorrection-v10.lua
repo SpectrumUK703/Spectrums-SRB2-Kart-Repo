@@ -27,14 +27,14 @@ local jumpcorrection_debug = CV_RegisterVar({
 local boosttable = {
 	{ 53740+768, 75000, 87500},
 	{     32768, 49152, 60074},
-	{ 17294+768, 32000, 41000}
+	{ 24576, 32000, 41000}	-- The first one is 24576 to account for invincibility jumps
 }
 
 addHook("ThinkFrame", function()
-	if not cv_jumpcorrection.value then return end
-	local sneakerpower
-	local newmomx
-	local newmomy
+	if not cv_jumpcorrection.value
+	or mapobjectscale < FRACUNIT then return end	-- it gets weird
+	local normalboostpower
+	local newspeed
 	local newmomz
 	local mo
 	local sector
@@ -47,7 +47,7 @@ addHook("ThinkFrame", function()
 	for p in players.iterate
 		p.jumpcorrectiontable = $ or {}
 		table = p.jumpcorrectiontable
-		sneakerpower = boosttable[gamespeed+1][p.SPSstackedpanels or 1]
+		normalboostpower = boosttable[gamespeed+1][p.SPSstackedpanels or 1]
 		table.springjump = $ and $-1 or 0
 		mo = p.mo
 		if p.spectator
@@ -56,27 +56,27 @@ addHook("ThinkFrame", function()
 		dash = GetSecSpecial(sector.special, 3) == 5
 		bouncy = GetSecSpecial(sector.special, 1) == 15
 		fuckingmushroom = GetSecSpecial(sector.special, 2)
-		totalboost = FixedMul(p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower], mapobjectscale) -- this is probably dumb
+		totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
 		isrising = mo.momz*P_MobjFlip(mo) > 0
 		if not P_IsObjectOnGround(mo)
 			if not table.jumped
-			and totalboost > sneakerpower+FRACUNIT and isrising
+			and totalboost > normalboostpower+FRACUNIT and isrising
 			and not ((mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
-				-- In the case of hardsneaker/firmsneaker, this is multiplying by (127.5%/150%)
-				newmomx = FixedDiv(FixedMul(mo.momx, FRACUNIT+sneakerpower), totalboost or 1)
-				newmomy = FixedDiv(FixedMul(mo.momy, FRACUNIT+sneakerpower), totalboost or 1)
-				newmomz = FixedDiv(FixedMul(mo.momz, FRACUNIT+sneakerpower), totalboost or 1)
+				-- In the case of hardsneaker/firmsneaker, this is multiplying by (127.5%/150%) for z movement
+				newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+normalboostpower), totalboost or 1)
+				newmomz = FixedDiv(FixedMul(mo.momz, FRACUNIT+normalboostpower), totalboost or 1)
 				if jumpcorrection_debug.value
+					print("p.speed: "..p.speed)
 					print("mo.momz: "..mo.momz)
 					print("k_speedboost: "..p.kartstuff[k_speedboost])
 					print("k_boostpower: "..p.kartstuff[k_boostpower])
 					print("totalboost: "..totalboost)
-					print("sneakerpower: "..sneakerpower)
+					print("normalboostpower: "..normalboostpower)
+					print("newspeed: "..newspeed)
 					print("newmomz: "..newmomz)
 					print("Jump corrected")
 				end
-				mo.momx = ($+newmomx)/2
-				mo.momy = ($+newmomy)/2
+				P_InstaThrust(mo, R_PointToAngle2(0, 0, mo.momx, mo.momy), newspeed)
 				P_SetObjectMomZ(mo, newmomz, false)
 			end
 			table.jumped = true
@@ -96,24 +96,28 @@ local function springjumpcorrection(pmo, mo)
 	if not (cv_jumpcorrection.value 
 	and mo and mo.valid and pmo and pmo.valid and mo.health and pmo.health 
 	and pmo.player and (mo.flags & MF_SPRING))
+	or mapobjectscale < FRACUNIT	-- it gets weird
 	or pmo.player.spectator
-	or pmo.scale ~= FRACUNIT -- other scales are too hard to work with
 	or abs(mo.z - pmo.z) > max(mo.height, pmo.height) then return end
 	local p = pmo.player
 	p.jumpcorrectiontable = $ or {}
 	local table = p.jumpcorrectiontable
-	local sneakerpower = boosttable[gamespeed+1][p.SPSstackedpanels or 1]
+	local normalboostpower = boosttable[gamespeed+1][p.SPSstackedpanels or 1]
 	local sector = P_ThingOnSpecial3DFloor(pmo) or pmo.subsector.sector
 	local dash = GetSecSpecial(sector.special, 3) == 5
 	local bouncy = GetSecSpecial(sector.special, 1) == 15
 	local fuckingmushroom = GetSecSpecial(sector.special, 2)
-	local totalboost = FixedMul(p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower], mapobjectscale) -- this is probably dumb
+	local totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
 	if not table.jumped
-	and totalboost > sneakerpower+FRACUNIT
+	and totalboost > normalboostpower+FRACUNIT
 	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
-		local newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+sneakerpower), totalboost or 1)
+		local newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+normalboostpower), totalboost or 1)
 		if jumpcorrection_debug.value
 			print("p.speed: "..p.speed)
+			print("k_speedboost: "..p.kartstuff[k_speedboost])
+			print("k_boostpower: "..p.kartstuff[k_boostpower])
+			print("totalboost: "..totalboost)
+			print("normalboostpower: "..normalboostpower)
 			print("newspeed: "..newspeed)
 			print("Spring jump corrected")
 		end
