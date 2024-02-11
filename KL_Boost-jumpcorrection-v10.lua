@@ -98,7 +98,7 @@ local function springjumpcorrection(pmo, mo)
 	local dash = GetSecSpecial(sector.special, 3) == 5
 	local bouncy = GetSecSpecial(sector.special, 1) == 15
 	local fuckingmushroom = GetSecSpecial(sector.special, 2)
-	local FixedMul(p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower], mapobjectscale) -- this is probably dumb
+	local totalboost = FixedMul(p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower], mapobjectscale) -- this is probably dumb
 	if not table.jumped
 	and totalboost > sneakerpower+FRACUNIT
 	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
