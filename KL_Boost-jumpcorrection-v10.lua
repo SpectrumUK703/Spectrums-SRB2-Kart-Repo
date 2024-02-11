@@ -51,7 +51,7 @@ addHook("ThinkFrame", function()
 		bouncy = GetSecSpecial(sector.special, 1) == 15
 		fuckingmushroom = GetSecSpecial(sector.special, 2)
 		totalboost = p.kartstuff[k_speedboost]+p.kartstuff[k_boostpower]
-		isrising = ((mo.flags2 & MF2_OBJECTFLIP) and mo.momz < 0) or (not (mo.flags2 & MF2_OBJECTFLIP) and mo.momz > 0)
+		isrising = mo.momz*P_MobjFlip(mo) > 0
 		if not P_IsObjectOnGround(mo)
 			if not table.jumped
 			and totalboost > sneakerpower+FRACUNIT and isrising
