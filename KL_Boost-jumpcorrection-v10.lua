@@ -113,8 +113,8 @@ local function springjumpcorrection(pmo, mo)
 	and not ((pmo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
 		local newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+sneakerpower), totalboost or 1)
 		if jumpcorrection_debug.value
-			print(p.speed)
-			print(newspeed)
+			print("p.speed: "..p.speed)
+			print("newspeed: "..newspeed)
 			print("Spring jump corrected")
 		end
 		p.speed = newspeed
