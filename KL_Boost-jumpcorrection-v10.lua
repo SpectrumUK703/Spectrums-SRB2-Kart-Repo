@@ -27,7 +27,7 @@ local jumpcorrection_debug = CV_RegisterVar({
 local boosttable = {
 	{ 53740+768, 75000, 87500},
 	{     32768, 49152, 60074},
-	{ 24576, 32000, 41000}	-- The first one is 24576 to account for invincibility jumps
+	{     21319, 32000, 41000}	-- 21319 is the average of 17294+768 (sneaker speed on Hard) and 24576 (invincibility speed)
 }
 
 addHook("ThinkFrame", function()

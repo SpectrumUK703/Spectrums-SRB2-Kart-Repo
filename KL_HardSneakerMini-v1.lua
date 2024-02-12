@@ -15,7 +15,7 @@ addHook("ThinkFrame", do
 	for p in players.iterate do
 		if not (p.mo and p.mo.valid) or p.spectator then continue end
 		if p.kartstuff[k_sneakertimer]
-			p.kartstuff[k_speedboost] = max($, 24576)	-- invincibility speed
+			p.kartstuff[k_speedboost] = max($, 21319)	-- average of sneaker speed and invincibility speed
 		end
 	end
 	if hostmodload or not (server and HOSTMOD and leveltime > TICRATE) then return end
