@@ -105,6 +105,8 @@ local function springjumpcorrection(pmo, mo)
 	p.jumpcorrectiontable = $ or {}
 	local table = p.jumpcorrectiontable
 	local normalboostpower = boosttable[gamespeed+1][p.SPSstackedpanels or 1]
+	table.speedboost = $ and max($, p.kartstuff[k_speedboost]) or p.kartstuff[k_speedboost]
+	table.boostpower = $ and max($, p.kartstuff[k_boostpower]) or p.kartstuff[k_boostpower]
 	local sector = P_ThingOnSpecial3DFloor(pmo) or pmo.subsector.sector
 	local dash = GetSecSpecial(sector.special, 3) == 5
 	local bouncy = GetSecSpecial(sector.special, 1) == 15
