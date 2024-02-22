@@ -5,7 +5,6 @@ local TICRATE = TICRATE
 local MFE_SPRUNG = MFE_SPRUNG
 local MF_SPRING = MF_SPRING
 local k_pogospring = k_pogospring
-local MF2_OBJECTFLIP = MF2_OBJECTFLIP
 local hostmodload
 
 local cv_jumpcorrection = CV_RegisterVar({
