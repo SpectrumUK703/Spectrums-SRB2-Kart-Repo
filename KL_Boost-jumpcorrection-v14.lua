@@ -1,4 +1,3 @@
-local k_sneakertimer = k_sneakertimer
 local k_speedboost = k_speedboost
 local k_boostpower = k_boostpower
 local FRACUNIT = FRACUNIT
@@ -31,8 +30,7 @@ local boosttable = {
 }
 
 addHook("PostThinkFrame", function()
-	if not cv_jumpcorrection.value
-	or mapobjectscale < FRACUNIT then return end	-- it gets weird
+	if not cv_jumpcorrection.value then return end
 	local normalboostpower
 	local newspeed
 	local newmomz
@@ -43,7 +41,6 @@ addHook("PostThinkFrame", function()
 	local fuckingmushroom -- mushroom plunge lmao
 	local totalboost
 	local table
-	local isrising
 	for p in players.iterate
 		p.jumpcorrectiontable = $ or {}
 		table = p.jumpcorrectiontable
@@ -62,10 +59,9 @@ addHook("PostThinkFrame", function()
 		bouncy = GetSecSpecial(sector.special, 1) == 15
 		fuckingmushroom = GetSecSpecial(sector.special, 2)
 		totalboost = table.speedboost+table.boostpower
-		isrising = mo.momz*P_MobjFlip(mo) > 0
 		if not P_IsObjectOnGround(mo)
 			if not table.jumped
-			and totalboost > normalboostpower+FRACUNIT and isrising
+			and totalboost > normalboostpower+FRACUNIT
 			and not ((mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
 				-- In the case of hardsneaker/firmsneaker, this is multiplying by (127.5%/150%) for z movement
 				newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+normalboostpower), totalboost or 1)
@@ -82,7 +78,7 @@ addHook("PostThinkFrame", function()
 					print("Jump corrected")
 				end
 				P_InstaThrust(mo, R_PointToAngle2(0, 0, mo.momx, mo.momy), newspeed)
-				P_SetObjectMomZ(mo, newmomz, false)
+				P_SetObjectMomZ(mo, FixedDiv(newmomz*P_MobjFlip(mo), mo.scale), false)	-- P_SetObjectMomZ corrects for scaling and reverse gravity, so we have to uncorrect for those
 			end
 			table.jumped = true
 		else
@@ -101,7 +97,6 @@ local function springjumpcorrection(pmo, mo)
 	if not (cv_jumpcorrection.value 
 	and mo and mo.valid and pmo and pmo.valid and mo.health and pmo.health 
 	and pmo.player and (mo.flags & MF_SPRING))
-	or mapobjectscale < FRACUNIT	-- it gets weird
 	or pmo.player.spectator
 	or mo.z > pmo.z + pmo.height
 	or mo.z + mo.height < pmo.z then return end
@@ -144,4 +139,3 @@ local function springjumpcorrection(pmo, mo)
 end
 
 addHook("MobjMoveCollide", springjumpcorrection, MT_PLAYER)
-addHook("MobjCollide", springjumpcorrection, MT_PLAYER)
