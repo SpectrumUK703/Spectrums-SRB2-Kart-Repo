@@ -103,7 +103,8 @@ local function springjumpcorrection(pmo, mo)
 	and pmo.player and (mo.flags & MF_SPRING))
 	or mapobjectscale < FRACUNIT	-- it gets weird
 	or pmo.player.spectator
-	or abs(mo.z - pmo.z) > max(mo.height, pmo.height) then return end
+	or mo.z > pmo.z + pmo.height
+	or mo.z + mo.height < pmo.z then return end
 	local p = pmo.player
 	p.jumpcorrectiontable = $ or {}
 	local table = p.jumpcorrectiontable
