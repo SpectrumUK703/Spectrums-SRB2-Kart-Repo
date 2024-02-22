@@ -27,7 +27,7 @@ local jumpcorrection_debug = CV_RegisterVar({
 local boosttable = {
 	{ 53740+768, 75000, 87500},
 	{     32768, 49152, 60074},
-	{     24576, 32000, 41000}	-- 24576 is invincibility speed
+	{     24576, 32000, 41000}	-- 24576 is invincibility speed (some jumps in vanilla maps are overshot by vanilla characters, but that can happen in vanilla Kart too so lmao)
 }
 
 addHook("PostThinkFrame", function()
