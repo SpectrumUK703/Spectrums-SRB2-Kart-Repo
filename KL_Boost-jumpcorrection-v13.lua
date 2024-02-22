@@ -54,6 +54,9 @@ addHook("PostThinkFrame", function()
 		mo = p.mo
 		if p.spectator
 		or not (mo and mo.valid) then continue end
+		if booststack and booststack.running
+			table.speedboost = max($, mo.bs_lastframeboost)
+		end
 		sector = P_ThingOnSpecial3DFloor(mo) or mo.subsector.sector
 		dash = GetSecSpecial(sector.special, 3) == 5
 		bouncy = GetSecSpecial(sector.special, 1) == 15
@@ -107,6 +110,9 @@ local function springjumpcorrection(pmo, mo)
 	local normalboostpower = boosttable[gamespeed+1][p.SPSstackedpanels or 1]
 	table.speedboost = $ and max($, p.kartstuff[k_speedboost]) or p.kartstuff[k_speedboost]
 	table.boostpower = $ and max($, p.kartstuff[k_boostpower]) or p.kartstuff[k_boostpower]
+	if booststack and booststack.running
+		table.speedboost = max($, pmo.bs_lastframeboost)
+	end
 	local sector = P_ThingOnSpecial3DFloor(pmo) or pmo.subsector.sector
 	local dash = GetSecSpecial(sector.special, 3) == 5
 	local bouncy = GetSecSpecial(sector.special, 1) == 15
