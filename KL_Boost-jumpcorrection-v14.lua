@@ -40,6 +40,7 @@ addHook("PostThinkFrame", function()
 	local fuckingmushroom -- mushroom plunge lmao
 	local totalboost
 	local table
+	local isrising
 	for p in players.iterate
 		p.jumpcorrectiontable = $ or {}
 		table = p.jumpcorrectiontable
@@ -58,9 +59,10 @@ addHook("PostThinkFrame", function()
 		bouncy = GetSecSpecial(sector.special, 1) == 15
 		fuckingmushroom = GetSecSpecial(sector.special, 2)
 		totalboost = table.speedboost+table.boostpower
+		isrising = mo.momz*P_MobjFlip(mo) > 0
 		if not P_IsObjectOnGround(mo)
 			if not table.jumped
-			and totalboost > normalboostpower+FRACUNIT
+			and totalboost > normalboostpower+FRACUNIT and isrising
 			and not ((mo.eflags & MFE_SPRUNG) or p.kartstuff[k_pogospring] or dash or bouncy or fuckingmushroom == 4 or fuckingmushroom == 5 or table.springjump)
 				-- In the case of hardsneaker/firmsneaker, this is multiplying by (127.5%/150%) for z movement
 				newspeed = FixedDiv(FixedMul(p.speed, FRACUNIT+normalboostpower), totalboost or 1)
