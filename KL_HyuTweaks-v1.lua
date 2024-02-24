@@ -38,7 +38,7 @@ addHook("ThinkFrame", do
 		if not (p.mo and p.mo.valid) or p.spectator then continue end
 		ks = p.kartstuff
 		if ks[k_stolentimer] and ks[k_stolentimer] > HALFTICRATE-2
-		and not (JUICEBOX and JUICEBOX.value and (p.hyutweaksaveditem == KITEM_SNEAKER or p.hyutweaksaveditem == KITEM_ROCKETSNEAKER)	-- Don't do anything if Juicebox is doing its thing
+		and not (JUICEBOX and JUICEBOX.value and (p.hyutweaksaveditem == KITEM_SNEAKER or p.hyutweaksaveditem == KITEM_ROCKETSNEAKER))-- Don't do anything if Juicebox is doing its thing
 			if (not funny_hyu_counter or P_RandomChance(FRACUNIT - FRACUNIT/(funny_hyu_counter+1)))
 				p.funnyhyu = true
 				ks[k_itemblink] = HALFTICRATE
