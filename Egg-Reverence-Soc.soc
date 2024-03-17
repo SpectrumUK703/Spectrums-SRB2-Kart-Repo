@@ -1,0 +1,10 @@
+Level MP
+LevelName = Egg Reverence
+Music = EGGREV
+SubTitle = Grape Jam R6
+TypeOfLevel = Race
+NumLaps = 3
+SkyNum = 3669
+NextLevel = 545
+lua.spawnskin = MT_BUSH,SPR_EGRV,D,MT_BERRYBUSH,SPR_EGRV,C,MT_GFZFLOWER3,SPR_EGRV,G,MT_PLANT2,SPR_EGRV,B
+lua.objectskin = MT_RANDOMITEM,spawnstate,S_EGGMANITEM1,MT_GFZFLOWER2,spawnstate,S_EGGFLOWER,MT_BSZFISH,spawnstate,S_EGGSIGN
