@@ -1,0 +1,14 @@
+Level 61
+LevelName = Honeybee Industry
+SubTitle = Fickle Hearts FINAL
+TypeOfLevel = Race
+Music = ZEPHNT
+NumLaps = 3
+SkyNum = 456
+Palette = 422
+RecordAttack = true
+NoVisitNeeded = true
+# Music:
+# TAG
+# ZEPHYRANTHES
+# [from Bemani's NEW Generation natsu no ryuusei festa 2016 event]
