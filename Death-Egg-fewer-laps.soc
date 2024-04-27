@@ -1,0 +1,11 @@
+Level RR_DeathEgg
+LevelName = Death Egg
+TypeOfLevel = Race
+NumLaps = 4
+LapsPerSection = 4
+SkyTexture = DEZSKY
+Music = KMAPDE
+MobjScale = FRACUNIT/4
+SkyboxScale = 32
+DefaultWaypointRadius = 200
+Darkness = -0.25
