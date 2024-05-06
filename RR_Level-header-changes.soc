@@ -1,0 +1,35 @@
+Level RR_DeathEgg
+LevelName = Death Egg
+TypeOfLevel = Race
+NumLaps = 4
+LapsPerSection = 4
+SkyTexture = DEZSKY
+Music = KMAPDE
+MobjScale = FRACUNIT/4
+SkyboxScale = 32
+DefaultWaypointRadius = 200
+Darkness = -0.25
+
+Level RR_Hydrocity
+LevelName = Hydrocity
+TypeOfLevel = Race
+NumLaps = 3
+SkyTexture = ~031
+SkyBoxScaleX = 0
+SkyBoxScaleY = 0
+SkyBoxScaleZ = 4
+LightAngle = 45
+LightContrast = 64
+Music = HYDZ,HYCAM1,HYCAM2
+MobjScale = FRACUNIT/4
+DefaultWaypointRadius = 128*FRACUNIT
+
+Level RR_SilvercloudIsland
+LevelName = Silvercloud
+Zonetitle = Island
+TypeOfLevel = Race
+Mobjscale = FRACUNIT/4
+NumLaps = 3
+SkyTEXTURE = ~131
+Music = SIISZ
+SubtractNum = True

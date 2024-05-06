@@ -1,0 +1,17 @@
+addfile KC_mickeymouse.wad
+wait 10
+addfile KC_SansRR_v1.pk3
+wait 10
+addfile RR_Fewer-laps-v2.soc
+wait 10
+addfile RRC_miku_v1.wad
+wait 10
+addfile RRL_Banish-maps-to-Map-Hell-v1.pk3
+wait 10
+addfile RRL_DDZ-fix-v1.lua
+wait 10
+addfile RRL_FlameShieldProtection-v2.lua
+wait 10
+addfile RRL_HORNMOD_VRR.1.pk3
+wait 10
+addfile X_TriangleFades-v1.wad
