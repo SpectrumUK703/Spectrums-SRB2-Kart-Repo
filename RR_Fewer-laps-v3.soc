@@ -91,6 +91,17 @@ Mobjscale = FRACUNIT/4
 LightContrast = 64
 LightAngle = 45
 
+Level RR_HiddenPalace
+LevelName = Hidden Palace
+TypeOfLevel = Race
+NumLaps = 2
+SkyTexture = HPSKY1
+Music = HDPAZ
+SkyboxScale = 24
+MobjScale = FRACUNIT/4
+Darkness = -0.25
+#FinishNeeded = True
+
 Level RR_HillTop
 LevelName = Hill Top
 TypeOfLevel = Race
@@ -148,7 +159,7 @@ TypeOfLevel = Race
 NumLaps = 4
 SkyTexture = EMZSKY01
 Music = ENMIZ
-MobjScale = FRACUNIT/5
+MobjScale = FRACUNIT*16/100
 Darkness = -0.5
 DefaultWaypointRadius = 50*FRACUNIT
 LightContrast = 24
@@ -550,15 +561,3 @@ Music = SHSQZ
 SkyboxScale = 0.25
 DefaultWaypointRadius = 768*FRACUNIT
 Mobjscale = FRACUNIT*90/100
-
-Level RR_HiddenPalace
-LevelName = Hidden Palace
-TypeOfLevel = Race
-NumLaps = 2
-SkyTexture = HPSKY1
-Music = HDPAZ
-SkyboxScale = 24
-MobjScale = FRACUNIT/4
-Darkness = -0.25
-#FinishNeeded = True
-
