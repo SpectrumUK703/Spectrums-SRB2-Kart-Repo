@@ -9,7 +9,7 @@ SkyTEXTURE = ~131
 Music = SIISZ
 SubtractNum = True
 
-##Restoring the original size of these maps because of issues the size change caused
+##Restoring the original size of this map because of issues the size change caused
 Level RR_AzureLake
 LevelName = Azure Lake
 TypeOfLevel = Race
@@ -20,18 +20,6 @@ MobjScale = FRACUNIT/5
 DefaultWaypointRadius = 50*FRACUNIT
 LightContrast = 24
 LightAngle = 110
-
-Level RR_ChromeGadget
-LevelName = Chrome Gadget
-TypeOfLevel = Race
-NumLaps = 5
-SkyTexture = CGZSKY01
-Music = CHGAZ
-MobjScale = FRACUNIT/5
-Darkness = -1.0
-DefaultWaypointRadius = 50*FRACUNIT
-LightContrast = 64
-LightAngle = 165
 
 ##Hydrocity instead of Hydro City lol
 Level RR_Hydrocity
