@@ -48,7 +48,7 @@ Music = HYDZ,HYCAM1,HYCAM2
 MobjScale = FRACUNIT/4
 DefaultWaypointRadius = 128*FRACUNIT
 
-##Changing MobjScale because I think it might help these maps
+##Changing MobjScale because I think it might help this map
 Level RR_CarnivalNight
 LevelName = Carnival Night
 TypeOfLevel = Race
@@ -57,13 +57,3 @@ SkyTexture = CNSKY01
 Music = CANIZ,CANIA,CANIB
 MobjScale = FRACUNIT/5
 Darkness = -1
-
-Level RR_SpringYard
-LevelName = Spring Yard
-TypeOfLevel = Race
-NumLaps = 3
-SkyTexture = ~150
-Music = SPYAZ
-Mobjscale = 1*FRACUNIT/5
-Darkness = 0.25
-
