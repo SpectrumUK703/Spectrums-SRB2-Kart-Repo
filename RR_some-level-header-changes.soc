@@ -1,3 +1,24 @@
+Level RR_HiddenPalace
+LevelName = Hidden Palace
+TypeOfLevel = Race
+NumLaps = 2
+SkyTexture = HPSKY1
+Music = HDPAZ
+SkyboxScale = 24
+MobjScale = FRACUNIT/4
+Darkness = -0.25
+#FinishNeeded = True
+
+Level RR_MarbleGarden
+LevelName = Marble Garden
+TypeOfLevel = Race
+NumLaps = 2
+SkyTexture = MGZSKY
+Music = MAGRZ,MAGRZ2,MAGRA
+MobjScale = FRACUNIT/4
+LightContrast = 48
+LightAngle = 225
+
 ##This is to change it from SilverCloud to Silvercloud
 Level RR_SilvercloudIsland
 LevelName = Silvercloud
@@ -9,17 +30,14 @@ SkyTEXTURE = ~131
 Music = SIISZ
 SubtractNum = True
 
-##Restoring the original size of this map because of issues the size change caused
-Level RR_AzureLake
-LevelName = Azure Lake
+Level RR_LaunchBase
+LevelName = Launch Base
 TypeOfLevel = Race
-NumLaps = 5
-SkyTexture = ALZSKY00
-Music = AZLAZ
-MobjScale = FRACUNIT/5
-DefaultWaypointRadius = 50*FRACUNIT
-LightContrast = 24
-LightAngle = 110
+NumLaps = 2
+SkyTexture = ~150
+Weather = PRECIP_SUNDAEDRIVE
+Music = LABAZ1,LABAA1,LABAA2
+MobjScale = FRACUNIT/4
 
 ##Hydrocity instead of Hydro City lol
 Level RR_Hydrocity
@@ -36,7 +54,7 @@ Music = HYDZ,HYCAM1,HYCAM2
 MobjScale = FRACUNIT/4
 DefaultWaypointRadius = 128*FRACUNIT
 
-##Changing MobjScale because I think it might help these maps
+##Changing MobjScale because I think it might help these two maps
 Level RR_CarnivalNight
 LevelName = Carnival Night
 TypeOfLevel = Race
@@ -54,4 +72,3 @@ SkyTexture = ~150
 Music = SPYAZ
 Mobjscale = 1*FRACUNIT/5
 Darkness = 0.25
-
