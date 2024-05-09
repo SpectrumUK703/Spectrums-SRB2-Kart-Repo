@@ -152,6 +152,30 @@ Weather = PRECIP_SUNDAEDRIVE
 Music = LABAZ1,LABAA1,LABAA2
 MobjScale = FRACUNIT/4
 
+##Also restoring the original size of these maps because of issues the size change caused
+Level RR_AzureLake
+LevelName = Azure Lake
+TypeOfLevel = Race
+NumLaps = 5
+SkyTexture = ALZSKY00
+Music = AZLAZ
+MobjScale = FRACUNIT/5
+DefaultWaypointRadius = 50*FRACUNIT
+LightContrast = 24
+LightAngle = 110
+
+Level RR_ChromeGadget
+LevelName = Chrome Gadget
+TypeOfLevel = Race
+NumLaps = 5
+SkyTexture = CGZSKY01
+Music = CHGAZ
+MobjScale = FRACUNIT/5
+Darkness = -1.0
+DefaultWaypointRadius = 50*FRACUNIT
+LightContrast = 64
+LightAngle = 165
+
 Level RR_EndlessMine
 LevelName = Endless Mine
 Act = 1
