@@ -1,5 +1,10 @@
 local mindelay = CV_FindVar("mindelay")
 local preferredmindelay
+local numplayers
+local lowestping
+local highestping
+local totalping
+local averageping
 
 local automindelay = CV_RegisterVar({
 	name = "automindelay",
@@ -28,10 +33,10 @@ addHook("ThinkFrame", function()
 	if not (netgame and consoleplayer) or consoleplayer.spectator then
 		return 
 	end
-	local numplayers = 0
-	local lowestping = 15
-	local highestping = 0
-	local totalping = 0
+	numplayers = 0
+	lowestping = 15
+	highestping = 0
+	totalping = 0
 	for p in players.iterate
 		if p.spectator or p.bot then continue end
 		if p ~= consoleplayer then
@@ -58,7 +63,7 @@ addHook("ThinkFrame", function()
 			end
 		else
 			totalping = $-min(lowestping, consoleplayer.ping)	-- take away the lowest ping
-			local averageping = totalping/numplayers
+			averageping = totalping/numplayers
 			averageping = max(min($, 15), 0)
 			if mindelay.value ~= averageping
 				COM_BufInsertText(consoleplayer, "mindelay "..tostring(averageping))
