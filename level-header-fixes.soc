@@ -1,0 +1,35 @@
+Level ABR_ThousandMarch
+LevelName = Bootleg War
+TypeOfLevel = Race
+SkyTexture = GUPSKY
+NumLaps = 6
+Music = RURIZ
+MobjScale = FRACUNIT/4
+LightAngle = -45
+LightContrast = 30
+NoVisitNeeded = true
+
+Level SBS_BubblegumBreeze
+LevelName = Bubblegum 
+ZoneTitle = Breeze
+TypeOfLevel = Race
+NumLaps = 3
+SkyTexture = ~150
+Music = SBBBM,SSB2M
+Mobjscale = FRACUNIT/4
+LightContrast = 0
+LightAngle = 45
+EncorePal = 2
+NoVisitNeeded = true
+
+Level SBS_SolarStation
+LevelName = Solar
+ZoneTitle = Station
+TypeOfLevel = Race
+NumLaps = 3
+SkyTexture = SKY1919
+Music = SBSSM
+Mobjscale = FRACUNIT/4
+LightContrast = 5
+LightAngle = 90
+NoVisitNeeded = true
