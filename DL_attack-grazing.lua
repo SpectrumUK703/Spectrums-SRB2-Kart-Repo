@@ -21,6 +21,7 @@ local itemtable = {
 	[MT_SUPER_FLICKY] = true,
 	[MT_DROPTARGET] = true,
 	[MT_DROPTARGET_SHIELD] = true,
+	[MT_SPBEXPLOSION] = true,
 }
 
 local function isplayerhazardous(p)
