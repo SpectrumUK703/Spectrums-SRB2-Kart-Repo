@@ -1,8 +1,9 @@
 local TICRATE = TICRATE
 local MF2_ALREADYHIT = MF2_ALREADYHIT
 local KITEM_FLAMESHIELD = KITEM_FLAMESHIELD
-local MT_PLAYER = MT_PLAYER
 local KSHIELD_TOP = KSHIELD_TOP
+local MT_PLAYER = MT_PLAYER
+local motype
 freeslot("sfx_graze")
 local itemtable = {
 	[MT_SSMINE_SHIELD] = true,
@@ -32,8 +33,9 @@ local function isplayerhazardous(p)
 end
 
 local function blockmapsearchfunc(pmo, mo)
-	if pmo and pmo.valid and pmo.player and pmo.player.valid and mo and mo.valid and mo.type 
-	and (itemtable[mo.type] or (mo.type == MT_PLAYER and isplayerhazardous(mo.player)))
+	motype = mo and mo.valid and mo.type
+	if pmo and pmo.valid and pmo.player and pmo.player.valid and motype 
+	and (itemtable[motype] or (motype == MT_PLAYER and isplayerhazardous(mo.player)))
 	and abs(pmo.z - mo.z) <= pmo.height + mo.height	-- Pretty close in height too
 	and not ((mo.target and mo.target == pmo) or (mo == pmo))
 		mo.grazetable = $ or {}
@@ -58,7 +60,7 @@ addHook("MobjThinker", function(mo)
 		p.grazesthistic = 0
 		searchBlockmap("objects", blockmapsearchfunc, mo, mo.x - 3*mo.radius/2, mo.x + 3*mo.radius/2, mo.y - 3*mo.radius/2, mo.y + 3*mo.radius/2)
 		if p.grazesthistic
-			--S_StartSound(nil, sfx_graze, p)
+			S_StartSound(nil, sfx_graze, p)
 			--CONS_Printf(p, "grazing")
 		end
 		p.driftboost = $+p.grazesthistic*2
