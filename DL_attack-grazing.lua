@@ -59,6 +59,7 @@ addHook("MobjThinker", function(mo)
 	or (p.flamedash and p.itemtype == KITEM_FLAMESHIELD)
 	or p.bubbleblowup
 	or p.curshield == KSHIELD_TOP)
+		p.grazesthistic = 0
 		searchBlockmap("objects", blockmapsearchfunc, mo, mo.x - 2*mo.radius, mo.x + 2*mo.radius, mo.y - 2*mo.radius, mo.y + 2*mo.radius)
 		if p.grazesthistic
 			S_StartSound(nil, sfx_graze, p)
