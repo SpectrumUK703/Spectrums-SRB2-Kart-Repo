@@ -2,6 +2,7 @@ local TICRATE = TICRATE
 local MF2_ALREADYHIT = MF2_ALREADYHIT
 local KITEM_FLAMESHIELD = KITEM_FLAMESHIELD
 local MT_PLAYER = MT_PLAYER
+local KSHIELD_TOP = KSHIELD_TOP
 freeslot("sfx_graze")
 local itemtable = {
 	[MT_SSMINE_SHIELD] = true,
@@ -51,7 +52,8 @@ addHook("MobjThinker", function(mo)
 	and not (p.spectator or p.flashing or p.spinouttimer 
 	or p.growshrinktimer > 0 or p.invincibilitytimer or p.hyudorotimer
 	or (p.flamedash and p.itemtype == KITEM_FLAMESHIELD)
-	or p.bubbleblowup)
+	or p.bubbleblowup
+	or p.curshield == KSHIELD_TOP)
 		p.grazesthistic = 0
 		searchBlockmap("objects", blockmapsearchfunc, mo, mo.x - 3*mo.radius/2, mo.x + 3*mo.radius/2, mo.y - 3*mo.radius/2, mo.y + 3*mo.radius/2)
 		if p.grazesthistic
