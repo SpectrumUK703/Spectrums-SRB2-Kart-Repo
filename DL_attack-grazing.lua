@@ -26,16 +26,15 @@ local itemtable = {
 }
 
 local function isplayerhazardous(p)
-	return (p and p.valid 
-	and (p.invincibilitytimer or p.growshrinktimer > 0
+	return (p.invincibilitytimer or p.growshrinktimer > 0
 	or (p.flamedash and p.itemtype == KITEM_FLAMESHIELD)
-	or p.bubbleblowup))
+	or p.bubbleblowup)
 end
 
 local function blockmapsearchfunc(pmo, mo)
 	motype = mo and mo.valid and mo.type
 	if pmo and pmo.valid and pmo.player and pmo.player.valid and motype 
-	and (itemtable[motype] or (motype == MT_PLAYER and isplayerhazardous(mo.player)))
+	and (itemtable[motype] or (motype == MT_PLAYER and mo.player and mo.player.valid and isplayerhazardous(mo.player)))
 	and abs(pmo.z - mo.z) <= pmo.height + mo.height	-- Pretty close in height too
 	and not ((mo.target and mo.target == pmo) or (mo == pmo))
 		mo.grazetable = $ or {}
@@ -54,18 +53,28 @@ addHook("MobjThinker", function(mo)
 	if not (mo and mo.valid and mo.health) or mo.hitlag or (mo.flags2 & MF2_ALREADYHIT) then return end
 	local p = mo.player
 	if p and p.valid 
-	and not (p.spectator or p.flashing or p.spinouttimer or p.exiting
-	or p.growshrinktimer > 0 or p.invincibilitytimer or p.hyudorotimer
-	or (p.flamedash and p.itemtype == KITEM_FLAMESHIELD)
-	or p.bubbleblowup
-	or p.curshield == KSHIELD_TOP)
-		p.grazesthistic = 0
-		searchBlockmap("objects", blockmapsearchfunc, mo, mo.x - 99*mo.radius/70, mo.x + 99*mo.radius/70, mo.y - 99*mo.radius/70, mo.y + 99*mo.radius/70)
-		if p.grazesthistic
-			S_StartSound(nil, sfx_graze, p)
-			p.driftboost = $+p.grazesthistic
+	and not isplayerhazardous(p)
+		if not (p.exiting or p.spectator or p.flashing or p.spinouttimer or p.hyudorotimer or p.curshield == KSHIELD_TOP)
 			p.grazesthistic = 0
-			--CONS_Printf(p, "grazing")
+			searchBlockmap("objects", blockmapsearchfunc, mo, mo.x - 99*mo.radius/70, mo.x + 99*mo.radius/70, mo.y - 99*mo.radius/70, mo.y + 99*mo.radius/70)
+			if p.grazesthistic
+				S_StartSound(nil, sfx_graze, p)
+				p.driftboost = $+p.grazesthistic
+				p.grazesthistic = 0
+				--CONS_Printf(p, "grazing")
+			end
+		end
+		mo.grazetable = $ or {}
+		for k, v in ipairs(mo.grazetable)
+			v = $ and $-1 or 0
 		end
 	end
 end, MT_PLAYER)
+
+addHook("MapLoad", function()
+	for p in players.iterate
+		if p.mo and p.mo.valid
+			p.mo.grazetable = {}
+		end
+	end
+end)
