@@ -40,7 +40,9 @@ local function blockmapsearchfunc(pmo, mo)
 	and not ((mo.target and mo.target == pmo) or (mo == pmo))
 		mo.grazetable = $ or {}
 		mo.grazetable[#pmo.player+1] = $ and $+1 or 1
-		if mo.grazetable[#pmo.player+1] < TICRATE
+		if mo.grazetable[#pmo.player+1] == 1
+			pmo.player.grazesthistic = $+TICRATE
+		elseif mo.grazetable[#pmo.player+1] < TICRATE
 			pmo.player.grazesthistic = $+1
 		else
 			mo.grazetable[#pmo.player+1] = TICRATE
@@ -52,18 +54,18 @@ addHook("MobjThinker", function(mo)
 	if not (mo and mo.valid and mo.health) or mo.hitlag or (mo.flags2 & MF2_ALREADYHIT) then return end
 	local p = mo.player
 	if p and p.valid 
-	and not (p.spectator or p.flashing or p.spinouttimer 
+	and not (p.spectator or p.flashing or p.spinouttimer or p.exiting
 	or p.growshrinktimer > 0 or p.invincibilitytimer or p.hyudorotimer
 	or (p.flamedash and p.itemtype == KITEM_FLAMESHIELD)
 	or p.bubbleblowup
 	or p.curshield == KSHIELD_TOP)
 		p.grazesthistic = 0
-		searchBlockmap("objects", blockmapsearchfunc, mo, mo.x - 3*mo.radius/2, mo.x + 3*mo.radius/2, mo.y - 3*mo.radius/2, mo.y + 3*mo.radius/2)
+		searchBlockmap("objects", blockmapsearchfunc, mo, mo.x - 2*mo.radius, mo.x + 2*mo.radius, mo.y - 2*mo.radius, mo.y + 2*mo.radius)
 		if p.grazesthistic
 			S_StartSound(nil, sfx_graze, p)
 			--CONS_Printf(p, "grazing")
 		end
-		p.driftboost = $+p.grazesthistic*2
+		p.driftboost = $+p.grazesthistic
 		p.grazesthistic = 0
 	end
 end, MT_PLAYER)
