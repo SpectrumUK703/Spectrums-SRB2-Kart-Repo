@@ -47,7 +47,7 @@ local function blockmapsearchfunc(pmo, mo)
 	or mo.target == pmo
 	or (mo.player and mo.player.valid and not isplayerhazardous(mo.player)) then return end
 	if itemtable[mo.type]
-	and R_PointToDist2(pmo.x, pmo.y, mo.x, mo.y) <= (pmo.radius + mo.radius)
+	and R_PointToDist2(pmo.x, pmo.y, mo.x, mo.y) <= 2*(pmo.radius + mo.radius)
 	and abs(pmo.z - mo.z) <= (pmo.height + mo.height)	-- Pretty close in height too
 		mo.grazedtable = $ or {}
 		if not mo.grazedtable[#pmo.player]
