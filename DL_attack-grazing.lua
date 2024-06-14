@@ -76,7 +76,7 @@ addHook("ThinkFrame", function()
 		if not mo.health or mo.hitlag or (mo.flags2 & MF2_ALREADYHIT) then continue end
 		if not isplayerhazardous(p)
 			if not (p.exiting or p.spectator or p.flashing or p.spinouttimer or p.hyudorotimer or p.curshield == KSHIELD_TOP)
-				searchBlockmap("objects", blockmapsearchfunc, mo)
+				searchBlockmap("objects", blockmapsearchfunc, mo, mo.x - 2*mo.radius, mo.x + 2*mo.radius, mo.y - 2*mo.radius, mo.y + 2*mo.radius)
 			end
 			mo.grazedtable = {}
 		end
