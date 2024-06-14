@@ -49,10 +49,10 @@ local function blockmapsearchfunc(pmo, mo)
 	if itemtable[mo.type]
 	and R_PointToDist2(pmo.x, pmo.y, mo.x, mo.y) <= (pmo.radius + mo.radius)
 	and abs(pmo.z - mo.z) <= (pmo.height + mo.height)	-- Pretty close in height too
-		pmo.player.grazedrecently = $ or 7
 		mo.grazedtable = $ or {}
 		if not mo.grazedtable[#pmo.player]
 			mo.grazedtable[#pmo.player] = true
+			S_StartSound(nil, sfx_graze, pmo.player)
 			pmo.player.driftboost = $+TICRATE
 		else
 			pmo.player.driftboost = $+1
@@ -77,11 +77,6 @@ addHook("ThinkFrame", function()
 		if not isplayerhazardous(p)
 			if not (p.exiting or p.spectator or p.flashing or p.spinouttimer or p.hyudorotimer or p.curshield == KSHIELD_TOP)
 				searchBlockmap("objects", blockmapsearchfunc, mo)
-				p.grazedrecently = $ and $-1 or 0
-				if p.grazedrecently == 1
-					S_StartSound(nil, sfx_graze, p)
-					--CONS_Printf(p, "grazing")
-				end
 			end
 			mo.grazedtable = {}
 		end
