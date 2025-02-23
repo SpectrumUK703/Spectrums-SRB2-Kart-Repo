@@ -1,3 +1,9 @@
+local advancemap = CV_FindVar("advancemap")
+
 addHook("MapLoad", function(map)
-	COM_BufInsertText(server, "advancemap "..tostring(max(P_RandomKey(3)+1,P_RandomKey(3)+1)))
+	advancemap = $ or CV_FindVar("advancemap")
+	local val = max(P_RandomKey(3)+1,P_RandomKey(3)+1)
+	if advancemap.value ~= val
+		COM_BufInsertText(server, "advancemap "..tostring(val))
+	end
 end)
