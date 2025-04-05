@@ -11,15 +11,14 @@ end
 local function hack_thinkframe()
 	if gametype == GT_BDD and mapheaderinfo[gamemap].typeoflevel != 0 then
 		if resetlapsnexttic then
+			resetlapsnexttic = nil
 			if bdd.gameover
 				print("Lucky timing for 1st place! (I'm not fixing this lol)")
-				resetlapsnexttic = nil
 				return
 			end
 			CV_StealthSet(cv_cheats, 1)
 			CV_Set(cv_numlaps, resetlapsnexttic)
 			CV_StealthSet(cv_cheats, 0)
-			resetlapsnexttic = nil
 		end
 		if bdd.gameover
 			for p in players.iterate
