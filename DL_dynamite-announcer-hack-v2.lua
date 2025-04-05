@@ -1,74 +1,53 @@
 local after_announcer = dusa_an_enable
 local after_dynamite = bdd
-local dusalapsxf
+local cv_numlaps = CV_FindVar("numlaps")
+local cv_cheats = CV_FindVar("cheats")
+local resetlapsnexttic
 if (after_announcer and after_dynamite) or not (after_announcer or after_dynamite) then
 	print("This has to be added between Daytona Announcer and Bean's Dynamite Derby!")
 	return
 end
 
-addHook("MapLoad", function()
-	dusalapsxf = nil
-end)
-
 local function hack_thinkframe()
-	if not (gametype == GT_BDD and mapheaderinfo[gamemap].typeoflevel != 0) then return end
-	if bdd.gameover
-		for p in players.iterate
-			if p.spectator or not (p.mo and p.mo.valid) then continue end
-			-- yes I'm copying code from Daytona Announcer, I don't want to do something super hacky with numlaps
-			if p.position == 1 and dusalapsxf == 1 and gamemap != 3 then
-				if server.dusaan == 1 and dusa_an.value == 4 or dusa_an.value == 1 then
-					if dusa_an_enable.value == 1 then
-						S_StartSound(nil, sfx_dusaw, p)
-						S_StartSoundAtVolume(nil, sfx_dusaw, 155)
-					end
-					dusalapsxf = 2
-				end
-				if server.dusaan == 2 and dusa_an.value == 4 or dusa_an.value == 2 then
-					if dusa_an_enable.value == 1 then
-						S_StartSound(nil, sfx_dusatw, p)
-						S_StartSoundAtVolume(nil, sfx_dusatw, 155)
-					end
-					dusalapsxf = 2
-				end
-				if server.dusaan == 3 and dusa_an.value == 4 or dusa_an.value == 3 then
-					if dusa_an_enable.value == 1 then
-						S_StartSound(nil, sfx_dusacw, p)
-						S_StartSoundAtVolume(nil, sfx_dusacw, 155)
-					end
-					dusalapsxf = 2
+	if gametype == GT_BDD and mapheaderinfo[gamemap].typeoflevel != 0 then
+		if resetlapsnexttic then
+			if bdd.gameover
+				print("Lucky timing for 1st place! (I'm not fixing this lol)")
+				resetlapsnexttic = nil
+				return
+			end
+			CV_StealthSet(cv_cheats, 1)
+			CV_Set(cv_numlaps, resetlapsnexttic)
+			CV_StealthSet(cv_cheats, 0)
+			resetlapsnexttic = nil
+		end
+		if bdd.gameover
+			for p in players.iterate
+				if p.spectator then continue end
+				if p.position == 1 and numlaps ~= p.laps-1
+					CV_StealthSet(cv_cheats, 1)
+					CV_Set(cv_numlaps, p.laps-1)
+					CV_StealthSet(cv_cheats, 0)
 				end
 			end
-		end
-	elseif bdd.numplayersremaining == 2 and 
-		for p in players.iterate
-			if p.spectator then continue end
-			if p.position == 1 and dusalapsxf == nil and gamemap != 3 then
-				if server.dusaan == 1 and dusa_an.value == 4 or dusa_an.value == 1 then
-					if dusa_an_enable.value == 1
-						S_StartSound(nil, sfx_dusafl)
-					end
-					dusalapsxf = 1
-				end
-				if server.dusaan == 2 and dusa_an.value == 4 or dusa_an.value == 2 then
-					if dusa_an_enable.value == 1
-						S_StartSound(nil, sfx_dusatf)
-					end
-					dusalapsxf = 1
-				end
-				if server.dusaan == 3 and dusa_an.value == 4 or dusa_an.value == 3 then
-					if dusa_an_enable.value == 1
-						S_StartSound(nil, sfx_dusacf)
-					end
-					dusalapsxf = 1
+		elseif bdd.numplayersremaining == 2 and (bdd.deathmessagetimer == 5 * TICRATE-1 or leveltime == 35)
+			for p in players.iterate
+				if p.spectator then continue end
+				if p.position == 1 and numlaps ~= p.laps
+					-- Yes, this does mean if 1st place is about to cross the finish line, they just win lol
+					resetlapsnexttic = numlaps
+					CV_StealthSet(cv_cheats, 1)
+					CV_Set(cv_numlaps, p.laps)
+					CV_StealthSet(cv_cheats, 0)
 				end
 			end
 		end
 	end
 end
-
 --This is so fucking hacky but I want these mods to work together
 addHook("ThinkFrame", function()
+	cv_numlaps = $ or CV_FindVar("numlaps")
+	cv_cheats = $ or CV_FindVar("cheats")
 	if not (dusa_an_enable and bdd) then return end
 	if (gametyperules & GTR_CIRCUIT) then
 		if after_announcer then
@@ -77,21 +56,19 @@ addHook("ThinkFrame", function()
 		else
 			hack_thinkframe()
 			rawset(_G, "gametype", 0)
-		end
-	end
-end)
-
-addHook("PreThinkFrame", function()
-	if not (dusa_an_enable and bdd) then return end
-	if (gametyperules & GTR_CIRCUIT) then
-		if after_announcer then
-			rawset(_G, "gametype", 0)
-		else
-			rawset(_G, "gametype", nil)
 		end
 	end
 end)
 
 addHook("PostThinkFrame", function()
-	rawset(_G, "gametype", nil)
+	cv_numlaps = $ or CV_FindVar("numlaps")
+	cv_cheats = $ or CV_FindVar("cheats")
+	if not (dusa_an_enable and bdd) then return end
+	if (gametyperules & GTR_CIRCUIT) then
+		if after_announcer then
+			rawset(_G, "gametype", 0)
+		else
+			rawset(_G, "gametype", nil)
+		end
+	end
 end)
